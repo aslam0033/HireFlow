@@ -1,0 +1,89 @@
+.homeContainer{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:#0f172a;
+    color:white;
+}
+
+.logo{
+    font-size:30px;
+}
+
+.navLinks{
+    display:flex;
+    gap:30px;
+}
+
+.navItem{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.heroSection{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.heroTitle{
+    font-size:56px;
+    margin-bottom:20px;
+}
+
+.heroDescription{
+    max-width:650px;
+    line-height:1.7;
+    font-size:18px;
+    color:#555;
+}
+
+.buttonContainer{
+    display:flex;
+    gap:20px;
+    margin-top:35px;
+}
+
+.loginButton,
+.registerButton{
+    padding:14px 36px;
+    border-radius:6px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:.3s;
+}
+
+.loginButton{
+    background:#2563eb;
+}
+
+.loginButton:hover{
+    background:#1d4ed8;
+}
+
+.registerButton{
+    background:#16a34a;
+}
+
+.registerButton:hover{
+    background:#15803d;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#e2e8f0;
+}
