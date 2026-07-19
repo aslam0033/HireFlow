@@ -6,6 +6,7 @@ import './index.css'
 import Register from './pages/authentication/Register'
 import VerifyEmail from './pages/authentication/VerifyEmail'
 import ResetPassword from './pages/authentication/ResetPassword'
+import ApplicantProfile from './pages/applicant/ApplicantProfile'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/verify-email' element={<VerifyEmail/>}/>
         <Route path='/reset-password' element={<ResetPassword/>}/>
+        <Route path='/applicant-profile' element={<ApplicantProfile/>}/>
       </Routes>
     </div>
   )

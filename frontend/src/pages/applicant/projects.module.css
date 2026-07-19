@@ -1,0 +1,76 @@
+.container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card {
+  border-left: 4px solid #2563eb;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+.card h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #111827;
+}
+
+.techStack {
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #1d4ed8;
+}
+
+.empty {
+  color: #6b7280;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    text-align: center;
+  }
+
+  .links {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,51 @@
+.container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skillBadge {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease;
+  cursor: default;
+}
+
+.skillBadge:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.noSkills {
+  color: #6b7280;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    text-align: center;
+  }
+
+  .skillsContainer {
+    justify-content: center;
+  }
+}
