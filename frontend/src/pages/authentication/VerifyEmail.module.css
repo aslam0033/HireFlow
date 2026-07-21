@@ -94,3 +94,19 @@
     text-decoration:none;
     font-weight:600;
 }
+
+.successMessage {
+  display: block;
+  color: #16a34a;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.errorMessage {
+  display: block;
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}

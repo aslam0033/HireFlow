@@ -1,26 +1,84 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useActionState, useState } from "react";
 import styles from "./register.module.css";
 
 function Register() {
+  // role storing
   const [role, setRole] = useState("applicant");
 
+  //navigation
+  const navigate = useNavigate();
+
+  //handling the form
+  const handleForm = async (prevData, formData) => {
+    // getting data from form
+    const fullname = formData.get('name')
+    const email = formData.get('email')
+    const password = formData.get('password')
+
+    //creating user object
+    const user = {
+      fullname: fullname,
+      email: email,
+      password: password,
+      role: role
+    }
+
+    //sending data to backend
+    try {
+      let data = await fetch("http://localhost:3500/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+      })
+      data = await data.json()
+      if (data.message) {
+        sessionStorage.setItem("email", email)
+        sessionStorage.setItem("user", JSON.stringify(user))
+        console.log(data.message);
+        navigate('/verify-email')
+      }
+      else {
+        console.log(data.error);
+
+      }
+    }
+    catch (e) {
+      return e;
+    }
+  }
+
+
+  const [data, action, pending] = useActionState(handleForm, undefined)
+
+
   return (
+
     <div className={styles.registerContainer}>
-      <div className={styles.registerCard}>
+      {pending && (
+        <div className={styles.loading}>
+          <div className={styles.spinner}></div>
+          <p>Sending OTP. Please wait...</p>
+        </div>
+      )}
+      {
+        !pending && <div className={styles.registerCard}>
         <h1 className={styles.heading}>Create Account</h1>
 
         <p className={styles.subHeading}>
           Join HireFlow and start your career journey.
         </p>
 
-        <form className={styles.registerForm}>
+        <form className={styles.registerForm} action={action}>
           <div className={styles.inputGroup}>
             <label>Full Name</label>
 
             <input
               type="text"
               placeholder="Enter your full name"
+              name="name"
             />
           </div>
 
@@ -30,6 +88,7 @@ function Register() {
             <input
               type="email"
               placeholder="Enter your email"
+              name="email"
             />
           </div>
 
@@ -39,15 +98,7 @@ function Register() {
             <input
               type="password"
               placeholder="Create a password"
-            />
-          </div>
-
-          <div className={styles.inputGroup}>
-            <label>Confirm Password</label>
-
-            <input
-              type="password"
-              placeholder="Confirm your password"
+              name="password"
             />
           </div>
 
@@ -63,7 +114,7 @@ function Register() {
             </select>
           </div>
 
-          <Link className={styles.registerButton} to='/verify-email'>Register</Link>
+          <button className={styles.registerButton}  >{pending ? "Sending the otp" : "Register"}</button>
         </form>
 
         <div className={styles.links}>
@@ -75,6 +126,7 @@ function Register() {
           </p>
         </div>
       </div>
+      }
     </div>
   );
 }

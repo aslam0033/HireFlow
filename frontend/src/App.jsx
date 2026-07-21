@@ -17,7 +17,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/verify-email' element={<VerifyEmail/>}/>
         <Route path='/reset-password' element={<ResetPassword/>}/>
-        <Route path='/applicant-profile' element={<ApplicantProfile/>}/>
+        <Route path='/profile' element={<ApplicantProfile/>}/>
       </Routes>
     </div>
   )
