@@ -28,6 +28,11 @@ function Login() {
       password:password,
     })
 
+    const user = {
+      email:email,
+      password:password,
+    }
+
     //sending data to server
     try{
       let response = await fetch("http://localhost:3500/login",{
@@ -35,7 +40,7 @@ function Login() {
       headers:{
         "content-type":"application/json"
       },
-      body:JSON.stringify(userData)
+      body:JSON.stringify(user)
     })
     response = await response.json();
     if(response.message){

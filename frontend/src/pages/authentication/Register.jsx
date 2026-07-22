@@ -39,6 +39,13 @@ function Register() {
       role:role
     })
 
+    const user = {
+      fullname:fullname,
+      email:email,
+      password:password,
+      role:role
+    }
+
     //sending data to backend
     try {
       let data = await fetch("http://localhost:3500/register", {
@@ -46,7 +53,7 @@ function Register() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(user)
       })
       data = await data.json()
       if (data.message) {
