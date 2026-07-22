@@ -4,42 +4,91 @@ import styles from "./login.module.css";
 import { useActionState } from "react";
 
 function Login() {
-  const [role, setRole] = useState("applicant");
+  //getting user details
+  const [userData,setUserData] = useState({
+    email:"",
+    password:"",
+    role:""
+  })
+  //alert setting
+  const [alert, setAlert] = useState({
+    show: false,
+    message: "",
+    type: ""
+  });
+  //variables
   const navigate =  useNavigate()
+  //handle form
   const handleForm = async (prevData,formData)=>{
     const email = formData.get("email")
     const password = formData.get("password")
     
-    const credentials = {
+    setUserData({
       email:email,
       password:password,
-      role:role
-    }
-    let response = await fetch("http://localhost:3500/login",{
+    })
+
+    //sending data to server
+    try{
+      let response = await fetch("http://localhost:3500/login",{
       method:"POST",
       headers:{
         "content-type":"application/json"
       },
-      body:JSON.stringify(credentials)
+      body:JSON.stringify(userData)
     })
     response = await response.json();
     if(response.message){
-      console.log(response.message);
-      
-      navigate("/profile")
+      setAlert({
+          show: true,
+          message: response.message,
+          type: "success"
+        });
+        setTimeout(() => {
+          navigate("/profile");
+        }, 2000);
     }
-    else{
-      console.log(response.error);
-      
+    else {
+        setAlert({
+          show: true,
+          message: response.error,
+          type: "error"
+        });
+      }
     }
-    return response;
+    catch (e) {
+      setAlert({
+        show: true,
+        message: "Something went wrong. Please try again.",
+        type: "error"
+      });
+    }
+    
   }
   const [data,action,isPending]= useActionState(handleForm,undefined)
 
 
   return (
     <div className={styles.loginContainer}>
-
+      {alert.show && (
+              <div className={`${styles.alert} ${styles[alert.type]}`}>
+                <span>{alert.message}</span>
+      
+                <button
+                  type="button"
+                  className={styles.closeAlert}
+                  onClick={() =>
+                    setAlert({
+                      show: false,
+                      message: "",
+                      type: ""
+                    })
+                  }
+                >
+                  ×
+                </button>
+              </div>
+            )}
       <div className={styles.loginCard}>
 
         <h1 className={styles.heading}>
@@ -59,6 +108,8 @@ function Login() {
               type="email"
               placeholder="Enter your email"
               name="email"
+              autoComplete="email"
+              defaultValue={userData.email}
             />
           </div>
 
@@ -69,22 +120,10 @@ function Login() {
               type="password"
               placeholder="Enter your password"
               name="password"
+              autoComplete="password"
+              defaultValue={userData.password}
             />
           </div>
-
-          <div className={styles.inputGroup}>
-            <label>Login As</label>
-
-            <select
-              value={role}
-              onChange={(e)=>setRole(e.target.value)}
-            >
-              <option value="applicant">Applicant</option>
-              <option value="recruiter">Recruiter</option>
-            </select>
-
-          </div>
-
           <button className={styles.loginButton}>
             Login
           </button>
@@ -93,7 +132,7 @@ function Login() {
 
         <div className={styles.links}>
 
-          <Link to="/reset-password">
+          <Link to="/forget-password">
             Forgot Password?
           </Link>
 

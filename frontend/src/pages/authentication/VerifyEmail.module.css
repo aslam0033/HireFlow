@@ -1,112 +1,705 @@
-.verifyContainer{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#f1f5f9;
+.verifyContainer {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(37, 99, 235, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(139, 92, 246, 0.15),
+            transparent 35%
+        ),
+        #020617;
 }
 
-.verifyCard{
-    width:430px;
-    background:white;
-    padding:35px;
-    border-radius:10px;
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+/* =========================
+   VERIFY CARD
+========================= */
+
+.verifyCard {
+
+    width: 430px;
+
+    background:
+        rgba(15, 23, 42, 0.78);
+
+    padding: 35px;
+
+    border-radius: 22px;
+
+    border:
+        1px solid rgba(96, 165, 250, 0.25);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        0 0 30px rgba(37, 99, 235, 0.08),
+        inset 0 0 20px rgba(96, 165, 250, 0.03);
+
+    position: relative;
+
+    animation:
+        cardAppear 0.6s ease-out;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.heading{
-    text-align:center;
-    margin-bottom:10px;
+
+.verifyCard:hover {
+
+    border-color:
+        rgba(96, 165, 250, 0.45);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 35px rgba(37, 99, 235, 0.15),
+        inset 0 0 25px rgba(96, 165, 250, 0.04);
 }
 
-.subHeading{
-    text-align:center;
-    color:#666;
-    margin-bottom:30px;
-    line-height:1.6;
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.97);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
-.verifyForm{
-    display:flex;
-    flex-direction:column;
+
+/* =========================
+   HEADING
+========================= */
+
+.heading {
+
+    text-align: center;
+
+    margin-bottom: 10px;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #60a5fa,
+            #a78bfa
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(
+            0 0 10px rgba(96, 165, 250, 0.2)
+        );
 }
 
-.inputGroup{
-    display:flex;
-    flex-direction:column;
-    margin-bottom:20px;
+
+/* =========================
+   SUB HEADING
+========================= */
+
+.subHeading {
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    margin-bottom: 30px;
+
+    line-height: 1.6;
+
+    font-size: 15px;
 }
 
-.inputGroup label{
-    margin-bottom:8px;
-    font-weight:600;
+
+/* =========================
+   VERIFY FORM
+========================= */
+
+.verifyForm {
+
+    display: flex;
+
+    flex-direction: column;
 }
 
-.inputGroup input{
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    outline:none;
-    font-size:16px;
-    text-align:center;
-    letter-spacing:4px;
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.inputGroup {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 20px;
 }
 
-.inputGroup input:focus{
-    border-color:#2563eb;
+
+.inputGroup label {
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+    color: #cbd5e1;
+
+    font-size: 14px;
 }
 
-.verifyButton{
-    padding:14px;
-    border:none;
-    border-radius:6px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
+
+/* =========================
+   OTP INPUT
+========================= */
+
+.inputGroup input {
+
+    padding: 15px;
+
+    border:
+        1px solid rgba(148, 163, 184, 0.25);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    font-size: 20px;
+
+    text-align: center;
+
+    letter-spacing: 8px;
+
+    font-weight: 600;
+
+    background:
+        rgba(2, 6, 23, 0.55);
+
+    color: #f8fafc;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        transform 0.2s ease;
 }
 
-.verifyButton:hover{
-    background:#1d4ed8;
+
+.inputGroup input::placeholder {
+
+    color:
+        #475569;
+
+    letter-spacing:
+        4px;
 }
 
-.links{
-    margin-top:25px;
-    text-align:center;
+
+.inputGroup input:hover {
+
+    border-color:
+        rgba(96, 165, 250, 0.4);
 }
 
-.resendButton{
-    border:none;
-    background:none;
-    color:#2563eb;
-    cursor:pointer;
-    font-size:15px;
-    margin-bottom:15px;
+
+.inputGroup input:focus {
+
+    border-color:
+        #60a5fa;
+
+    background:
+        rgba(15, 23, 42, 0.8);
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12),
+        0 0 20px rgba(59, 130, 246, 0.25);
+
+    transform:
+        translateY(-1px);
 }
 
-.resendButton:hover{
-    text-decoration:underline;
+
+/* =========================
+   VERIFY BUTTON
+========================= */
+
+.verifyButton {
+
+    padding: 14px;
+
+    border:
+        1px solid rgba(96, 165, 250, 0.35);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
-.links a{
-    color:#2563eb;
-    text-decoration:none;
-    font-weight:600;
+
+/* Animated light sweep */
+
+.verifyButton::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+
+    transition:
+        left 0.5s ease;
 }
+
+
+.verifyButton:hover::before {
+
+    left: 100%;
+}
+
+
+.verifyButton:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #93c5fd;
+
+    box-shadow:
+        0 0 10px rgba(96, 165, 250, 0.6),
+        0 0 25px rgba(37, 99, 235, 0.4),
+        0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+.verifyButton:active {
+
+    transform:
+        translateY(-1px)
+        scale(0.98);
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.links {
+
+    margin-top: 25px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   RESEND BUTTON
+========================= */
+
+.resendButton {
+
+    border: none;
+
+    background: transparent;
+
+    color: #60a5fa;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    margin-bottom: 15px;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.resendButton:hover {
+
+    color:
+        #93c5fd;
+
+    background:
+        rgba(59, 130, 246, 0.08);
+
+    box-shadow:
+        0 0 12px rgba(59, 130, 246, 0.15);
+}
+
+
+/* =========================
+   LINK
+========================= */
+
+.links a {
+
+    color:
+        #60a5fa;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        600;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+
+.links a:hover {
+
+    color:
+        #93c5fd;
+
+    text-shadow:
+        0 0 10px rgba(96, 165, 250, 0.6);
+}
+
+
+/* =========================
+   INLINE SUCCESS MESSAGE
+========================= */
 
 .successMessage {
-  display: block;
-  color: #16a34a;
-  font-size: 14px;
-  margin-bottom: 8px;
-  font-weight: 500;
+
+    display: block;
+
+    color:
+        #86efac;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        8px;
+
+    font-weight:
+        500;
+
+    padding:
+        8px 10px;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(34, 197, 94, 0.08);
+
+    border:
+        1px solid rgba(74, 222, 128, 0.2);
 }
 
+
+/* =========================
+   INLINE ERROR MESSAGE
+========================= */
+
 .errorMessage {
-  display: block;
-  color: #dc2626;
-  font-size: 14px;
-  margin-bottom: 8px;
-  font-weight: 500;
+
+    display: block;
+
+    color:
+        #fca5a5;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        8px;
+
+    font-weight:
+        500;
+
+    padding:
+        8px 10px;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(239, 68, 68, 0.08);
+
+    border:
+        1px solid rgba(248, 113, 113, 0.2);
+}
+
+
+/* =========================
+   ALERT
+========================= */
+
+.alert {
+
+    position: fixed;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    min-width: 300px;
+
+    max-width: 450px;
+
+    padding: 15px 18px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    animation:
+        slideIn 0.4s ease-out;
+}
+
+
+/* =========================
+   SUCCESS ALERT
+========================= */
+
+.success {
+
+    background:
+        rgba(6, 78, 59, 0.75);
+
+    color:
+        #86efac;
+
+    border:
+        1px solid rgba(74, 222, 128, 0.45);
+
+    box-shadow:
+        0 0 15px rgba(34, 197, 94, 0.15),
+        0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================
+   ERROR ALERT
+========================= */
+
+.error {
+
+    background:
+        rgba(127, 29, 29, 0.75);
+
+    color:
+        #fca5a5;
+
+    border:
+        1px solid rgba(248, 113, 113, 0.45);
+
+    box-shadow:
+        0 0 15px rgba(239, 68, 68, 0.15),
+        0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================
+   CLOSE ALERT
+========================= */
+
+.closeAlert {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    color: inherit;
+
+    padding: 0;
+
+    line-height: 1;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.closeAlert:hover {
+
+    opacity: 0.7;
+
+    transform:
+        scale(1.15)
+        rotate(90deg);
+}
+
+
+/* =========================
+   ALERT ANIMATION
+========================= */
+
+@keyframes slideIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -20px)
+            scale(0.95);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 500px) {
+
+    .verifyContainer {
+
+        padding: 20px;
+    }
+
+    .verifyCard {
+
+        width: 100%;
+
+        padding: 28px 22px;
+
+        border-radius: 18px;
+    }
+
+    .heading {
+
+        font-size: 26px;
+    }
+
+    .inputGroup input {
+
+        font-size: 18px;
+
+        letter-spacing: 6px;
+    }
+
+    .alert {
+
+        min-width: auto;
+
+        width:
+            calc(100% - 40px);
+    }
 }

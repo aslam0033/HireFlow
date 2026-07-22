@@ -3,6 +3,21 @@ import { useActionState, useState } from "react";
 import styles from "./register.module.css";
 
 function Register() {
+  //storing user data
+  const [userData,setUserData] = useState({
+    fullname:"",
+    email:"",
+    password:"",
+    role:""
+  })
+
+  //alert setting
+  const [alert, setAlert] = useState({
+    show: false,
+    message: "",
+    type: ""
+  });
+  
   // role storing
   const [role, setRole] = useState("applicant");
 
@@ -17,12 +32,12 @@ function Register() {
     const password = formData.get('password')
 
     //creating user object
-    const user = {
-      fullname: fullname,
-      email: email,
-      password: password,
-      role: role
-    }
+    setUserData({
+      fullname:fullname,
+      email:email,
+      password:password,
+      role:role
+    })
 
     //sending data to backend
     try {
@@ -31,22 +46,36 @@ function Register() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(userData)
       })
       data = await data.json()
       if (data.message) {
         sessionStorage.setItem("email", email)
-        sessionStorage.setItem("user", JSON.stringify(user))
-        console.log(data.message);
-        navigate('/verify-email')
+        sessionStorage.setItem("user", JSON.stringify(userData))
+        setAlert({
+          show: true,
+          message: data.message,
+          type: "success"
+        });
+
+        setTimeout(() => {
+          navigate("/verify-email");
+        }, 2000);
       }
       else {
-        console.log(data.error);
-
+        setAlert({
+          show: true,
+          message: data.error,
+          type: "error"
+        });
       }
     }
     catch (e) {
-      return e;
+      setAlert({
+        show: true,
+        message: "Something went wrong. Please try again.",
+        type: "error"
+      });
     }
   }
 
@@ -57,14 +86,26 @@ function Register() {
   return (
 
     <div className={styles.registerContainer}>
-      {pending && (
-        <div className={styles.loading}>
-          <div className={styles.spinner}></div>
-          <p>Sending OTP. Please wait...</p>
+      {alert.show && (
+        <div className={`${styles.alert} ${styles[alert.type]}`}>
+          <span>{alert.message}</span>
+
+          <button
+            type="button"
+            className={styles.closeAlert}
+            onClick={() =>
+              setAlert({
+                show: false,
+                message: "",
+                type: ""
+              })
+            }
+          >
+            ×
+          </button>
         </div>
       )}
-      {
-        !pending && <div className={styles.registerCard}>
+      <div className={styles.registerCard}>
         <h1 className={styles.heading}>Create Account</h1>
 
         <p className={styles.subHeading}>
@@ -79,6 +120,9 @@ function Register() {
               type="text"
               placeholder="Enter your full name"
               name="name"
+              autoComplete="name"
+              defaultValue={userData.fullname}
+              required
             />
           </div>
 
@@ -89,6 +133,9 @@ function Register() {
               type="email"
               placeholder="Enter your email"
               name="email"
+              autoComplete="email"
+              defaultValue={userData.email}
+              required
             />
           </div>
 
@@ -99,6 +146,9 @@ function Register() {
               type="password"
               placeholder="Create a password"
               name="password"
+              autoComplete="newPassword"
+              defaultValue={userData.password}
+              required
             />
           </div>
 
@@ -113,8 +163,15 @@ function Register() {
               <option value="recruiter">Recruiter</option>
             </select>
           </div>
-
-          <button className={styles.registerButton}  >{pending ? "Sending the otp" : "Register"}</button>
+          {pending && (
+            <div className={styles.loading}>
+              <div className={styles.spinner}></div>
+              <p>Sending OTP. Please wait...</p>
+            </div>
+          )}
+          {
+            !pending && <button className={styles.registerButton}  >Register</button>
+          }
         </form>
 
         <div className={styles.links}>
@@ -126,7 +183,6 @@ function Register() {
           </p>
         </div>
       </div>
-      }
     </div>
   );
 }

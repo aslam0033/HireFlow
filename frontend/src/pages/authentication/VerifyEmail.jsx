@@ -5,9 +5,17 @@ import { useState } from "react";
 import { useTransition } from "react";
 
 function VerifyEmail() {
-  const[resendInfo,setResentInfo] = useState(undefined)
+  //alert setting
+  const [alert, setAlert] = useState({
+    show: false,
+    message: "",
+    type: ""
+  });
+  //variables
+  const [resendInfo, setResentInfo] = useState(undefined)
   const navigate = useNavigate()
-  const[pending,setPending] = useTransition()
+
+  //handling the form
   const handleform = async (prevData, formData) => {
     const email = sessionStorage.getItem("email")
     const otp = formData.get("otp")
@@ -15,46 +23,100 @@ function VerifyEmail() {
       otp: otp,
       email: email
     }
-    let response = await fetch("http://localhost:3500/verify-email", {
+    //sending data to server
+    try{
+      let data = await fetch("http://localhost:3500/verify-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(reqBody)
     })
-    response = await response.json()
-    navigate("/login")
-    return response;
+    data = await data.json()
+    if (data.message) {
+        setAlert({
+          show: true,
+          message: data.message,
+          type: "success"
+        });
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      }
+      else {
+        setAlert({
+          show: true,
+          message: data.error,
+          type: "error"
+        });
+      }
+    }
+    catch (e) {
+      setAlert({
+        show: true,
+        message: "Something went wrong. Please try again.",
+        type: "error"
+      });
+    }
   }
 
-  const handleResend = async()=>{
+  const handleResend = async () => {
     const user = JSON.parse(sessionStorage.getItem("user"))
     // sending data to backend
-    setPending(async()=>{
-      try{
-      let data = await fetch ("http://localhost:3500/register",{
-      method:"POST",
-      headers:{
-        "Content-Type": "application/json"
-      },
-      body:JSON.stringify(user)
-    })
-    data = await data.json()
-    if(data.message){
-      return setResentInfo(data.message)
+    try {
+      let data = await fetch("http://localhost:3500/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+      })
+      data = await data.json()
+      if (data.message) {
+        setAlert({
+          show: true,
+          message: data.message,
+          type: "success"
+        });
+      }
+      else {
+        setAlert({
+          show: true,
+          message: data.error,
+          type: "error"
+        });
+      }
     }
-    else{
-      return setResentInfo(data.error)
+    catch (e) {
+      setAlert({
+        show: true,
+        message: "Something went wrong. Please try again.",
+        type: "error"
+      });
     }
-    } 
-    catch(e){
-      return e;
-    }
-    })
-  } 
+  }
   const [data, action, isPending] = useActionState(handleform, undefined)
   return (
     <div className={styles.verifyContainer}>
+      {alert.show && (
+        <div className={`${styles.alert} ${styles[alert.type]}`}>
+          <span>{alert.message}</span>
+
+          <button
+            type="button"
+            className={styles.closeAlert}
+            onClick={() =>
+              setAlert({
+                show: false,
+                message: "",
+                type: ""
+              })
+            }
+          >
+            ×
+          </button>
+        </div>
+      )}
       <div className={styles.verifyCard}>
 
         <h1 className={styles.heading}>
@@ -100,8 +162,6 @@ function VerifyEmail() {
           <button className={styles.resendButton} onClick={handleResend}>
             Resend Code
           </button>
-          <h4 className={styles.successMessage}>{pending?"resending the otp...":resendInfo && resendInfo}</h4>
-
         </div>
 
       </div>

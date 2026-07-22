@@ -23,10 +23,10 @@ const pendingUserSchema = mongoose.Schema({
         required:true
     },
     otpExpiry:{
-        type:String,
+        type:Date,
         required:true
     },
-},{timestapms:true})
+},{timestamps:true})
 
 const pendingUserModel = mongoose.model("pendingUsers",pendingUserSchema)
 

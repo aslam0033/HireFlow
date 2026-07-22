@@ -6,7 +6,10 @@ import dbConnect from './config/db.js';
 import handleVerification from './controllers/handleEmailVerification.js';
 import handleLogin from './controllers/handleLogin.js';
 import cookieParser from 'cookie-parser';
-import isLoggedIn from './middleware/login.js';
+import handleResetotp from './controllers/handleResetotp.js';
+import handleForgetPassword from './controllers/handleForgetPassword.js';
+import handleResetPassword from './controllers/handleResetPassword.js';
+import isOtpVerified from './middleware/resetPass.js';
 
 const app = express()
 
@@ -18,4 +21,7 @@ dbConnect();
 app.post("/register",handleRegister)
 app.post("/verify-email",handleVerification)
 app.post("/login",handleLogin)
-app.listen(3500,()=>{console.log("Server Has been started");})
+app.post("/getEmail",handleForgetPassword)
+app.post("/verify-otp",handleResetotp)
+app.post("/reset-password",isOtpVerified,handleResetPassword)
+app.listen(process.env.PORT,()=>{console.log("Server Has been started");})
