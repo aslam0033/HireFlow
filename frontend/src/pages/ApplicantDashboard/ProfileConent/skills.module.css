@@ -1,0 +1,144 @@
+.skillsCard{
+    width:100%;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:24px;
+    margin-bottom:10px;
+}
+
+.cardHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.cardHeader h2{
+    margin:0;
+    font-size:20px;
+    font-weight:600;
+    color:#1e293b;
+}
+
+.addButton{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:8px 14px;
+    border:1px solid #cbd5e1;
+    border-radius:7px;
+    background:#ffffff;
+    color:#2563eb;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s ease;
+}
+
+.addButton:hover{
+    background:#eff6ff;
+    border-color:#2563eb;
+}
+
+.addButton svg{
+    font-size:16px;
+}
+
+.skillsList{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.skillRow{
+    width:100%;
+    min-height:48px;
+    padding:0 14px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.skillName{
+    font-size:14px;
+    font-weight:500;
+    color:#334155;
+}
+
+.removeButton{
+    width:28px;
+    height:28px;
+    padding:0;
+    border:none;
+    border-radius:6px;
+    background:transparent;
+    color:#94a3b8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+    transition:all 0.2s ease;
+}
+
+.removeButton:hover{
+    background:#fee2e2;
+    color:#ef4444;
+}
+
+.removeButton svg{
+    font-size:16px;
+}
+
+.viewAllButton{
+    display:block;
+    margin:18px auto 0;
+    padding:8px 18px;
+    border:none;
+    background:transparent;
+    color:#2563eb;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s ease;
+}
+
+.viewAllButton:hover{
+    color:#1d4ed8;
+    text-decoration:underline;
+}
+
+@media(max-width:600px){
+
+    .skillsCard{
+        padding:20px;
+    }
+
+    .cardHeader h2{
+        font-size:18px;
+    }
+
+}
+
+@media(max-width:400px){
+
+    .cardHeader{
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .addButton{
+        padding:8px 10px;
+    }
+
+    .addButton span{
+        display:none;
+    }
+
+}

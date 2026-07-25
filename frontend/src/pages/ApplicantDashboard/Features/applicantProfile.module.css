@@ -1,0 +1,591 @@
+.profilePage {
+  min-height: 100vh;
+  padding: 30px;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.header p {
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ================= SECTION HEADER ================= */
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+}
+
+
+/* ================= ICON BUTTON ================= */
+
+.iconButton {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #64748b;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.iconButton:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+
+/* ================= ADD BUTTON ================= */
+
+.addButton {
+  padding: 8px 14px;
+
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+
+  background: white;
+
+  color: #2563eb;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.addButton:hover {
+  background: #eff6ff;
+}
+
+
+
+/* ================= PROFILE CARD ================= */
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.avatar {
+  width: 75px;
+  height: 75px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #2563eb;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profileInfo h2 {
+  margin: 0 0 5px;
+  font-size: 22px;
+}
+
+.profileInfo p {
+  margin: 0 0 7px;
+  color: #64748b;
+}
+
+.profileInfo span {
+  font-size: 14px;
+  color: #64748b;
+}
+
+
+/* ================= SECTION ================= */
+
+.section {
+  margin-bottom: 25px;
+  padding: 25px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.section h2 {
+  margin: 0 0 20px;
+
+  font-size: 18px;
+  color: #0f172a;
+}
+
+
+/* ================= SECTION HEADER ================= */
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+}
+
+.addButton {
+  padding: 8px 14px;
+
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+
+  background: white;
+  color: #2563eb;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.addButton:hover {
+  background: #eff6ff;
+}
+
+
+/* ================= INFO GRID ================= */
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.infoItem {
+  padding: 15px;
+
+  background: #f8fafc;
+
+  border-radius: 8px;
+}
+
+.infoItem label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 13px;
+  color: #64748b;
+}
+
+.infoItem p {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  color: #1e293b;
+}
+
+
+/* ================= ABOUT ================= */
+
+.aboutText {
+  margin: 0;
+
+  line-height: 1.7;
+
+  color: #64748b;
+
+  font-size: 15px;
+}
+
+
+/* ================= SKILLS ================= */
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills span,
+.projectSkills span {
+  padding: 8px 14px;
+
+  border-radius: 20px;
+
+  background: #eff6ff;
+  color: #2563eb;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+/* ================= EXPERIENCE ================= */
+
+.timelineItem {
+  display: flex;
+  gap: 18px;
+
+  position: relative;
+}
+
+.timelineDot {
+  width: 12px;
+  height: 12px;
+
+  margin-top: 6px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #2563eb;
+}
+
+.timelineContent h3 {
+  margin: 0 0 5px;
+
+  font-size: 17px;
+}
+
+.timelineContent h4 {
+  margin: 0 0 5px;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #475569;
+}
+
+.timelineContent p {
+  margin-top: 12px;
+
+  line-height: 1.6;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.duration {
+  display: inline-block;
+
+  font-size: 13px;
+
+  color: #64748b;
+}
+
+
+/* ================= EDUCATION ================= */
+
+.educationItem h3 {
+  margin: 0 0 6px;
+
+  font-size: 17px;
+}
+
+.educationItem h4 {
+  margin: 0 0 6px;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #475569;
+}
+
+.educationItem p {
+  margin-top: 12px;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* ================= PROJECTS ================= */
+
+.projectGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 200px;
+
+  padding: 20px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 10px;
+}
+
+.projectCard h3 {
+  margin: 0 0 10px;
+
+  font-size: 17px;
+}
+
+.projectCard p {
+  margin: 0 0 15px;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.projectSkills {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.projectSkills span {
+  padding: 6px 10px;
+
+  font-size: 12px;
+}
+
+.viewButton {
+  align-self: flex-start;
+
+  margin-top: 20px;
+
+  padding: 8px 14px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.viewButton:hover {
+  background: #1d4ed8;
+}
+
+
+/* ================= CERTIFICATIONS ================= */
+
+.certificationGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.certificationCard {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 10px;
+}
+
+.certificationCard h3 {
+  margin: 0 0 8px;
+
+  font-size: 16px;
+}
+
+.issuer {
+  margin: 0 0 5px;
+
+  color: #475569;
+
+  font-size: 14px;
+}
+
+
+/* ================= RESUME ================= */
+
+.resumeBox {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 8px;
+
+  background: #f8fafc;
+}
+
+.resumeBox h3 {
+  margin: 0 0 5px;
+
+  font-size: 16px;
+}
+
+.resumeBox p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.uploadButton {
+  padding: 10px 18px;
+
+  border: 1px solid #2563eb;
+
+  border-radius: 7px;
+
+  background: white;
+
+  color: #2563eb;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.uploadButton:hover {
+  background: #eff6ff;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+  .projectGrid,
+  .certificationGrid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .profilePage {
+    padding: 20px;
+  }
+
+  .header {
+    align-items: flex-start;
+    gap: 15px;
+
+    flex-direction: column;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resumeBox {
+    align-items: flex-start;
+    gap: 15px;
+
+    flex-direction: column;
+  }
+
+  .certificationCard {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .profileCard {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    gap: 12px;
+
+    flex-direction: column;
+  }
+
+}

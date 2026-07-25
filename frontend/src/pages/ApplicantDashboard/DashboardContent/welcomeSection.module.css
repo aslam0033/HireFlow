@@ -1,0 +1,164 @@
+.welcomeSection {
+  width: 100%;
+  min-height: 180px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 35px 40px;
+
+  box-sizing: border-box;
+
+  background: #2563eb;
+
+  border-radius: 14px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ==========================
+        CONTENT
+========================== */
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+
+.heading {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+
+.description {
+  max-width: 550px;
+
+  margin: 10px 0 0;
+
+  color: #dbeafe;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* ==========================
+        BUTTON
+========================== */
+
+.findJobButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 11px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+}
+
+
+.findJobButton:hover {
+  background: #eff6ff;
+
+  transform: translateY(-1px);
+}
+
+
+/* ==========================
+        DECORATION
+========================== */
+
+.welcomeSection::after {
+  content: "";
+
+  width: 220px;
+  height: 220px;
+
+  position: absolute;
+
+  right: -70px;
+  top: -90px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+.welcomeSection::before {
+  content: "";
+
+  width: 150px;
+  height: 150px;
+
+  position: absolute;
+
+  right: 120px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* ==========================
+        RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+
+  .welcomeSection {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 30px;
+  }
+
+
+  .heading {
+    font-size: 24px;
+  }
+
+
+  .description {
+    font-size: 14px;
+  }
+
+
+  .findJobButton {
+    width: 100%;
+  }
+
+}

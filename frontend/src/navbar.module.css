@@ -1,0 +1,549 @@
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 6%;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #dbe5f5;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 200px;
+
+  cursor: pointer;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5
+  );
+
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  box-shadow:
+    0 5px 12px rgba(37, 99, 235, 0.25);
+}
+
+.logoText {
+  font-size: 21px;
+
+  font-weight: 750;
+
+  letter-spacing: -0.6px;
+
+  color: #111827;
+}
+
+
+/* =========================================
+   MAIN NAVIGATION
+========================================= */
+
+.navigation {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-left: 20px;
+}
+
+
+/* =========================================
+   NAVIGATION ITEM
+========================================= */
+
+.navItem {
+  position: relative;
+
+  height: 100%;
+
+  min-width: 90px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 0 14px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* =========================================
+   NAVIGATION ICON
+========================================= */
+
+.navItem > svg,
+.iconWrapper svg {
+  width: 21px;
+  height: 21px;
+
+  stroke-width: 1.8;
+
+  transition: transform 0.2s ease;
+}
+
+
+/* =========================================
+   ICON WRAPPER
+========================================= */
+
+.iconWrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.navItem:hover {
+  color: #2563eb;
+}
+
+.navItem:hover svg {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   ACTIVE NAVIGATION
+========================================= */
+
+.navItem.active {
+  color: #2563eb;
+
+  font-weight: 600;
+}
+
+
+/* Active Bottom Line */
+
+.navItem.active::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+
+  left: 18px;
+  right: 18px;
+
+  height: 3px;
+
+  border-radius: 5px 5px 0 0;
+
+  background: #2563eb;
+}
+
+
+/* =========================================
+   NOTIFICATION / MESSAGE BADGE
+========================================= */
+
+.badge {
+  position: absolute;
+
+  top: -6px;
+  right: -8px;
+
+  min-width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 4px;
+
+  border-radius: 20px;
+
+  background: #ef4444;
+
+  color: #ffffff;
+
+  border: 2px solid #eef4ff;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   RIGHT SECTION
+========================================= */
+
+.rightSection {
+  margin-left: auto;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+  width: 1px;
+  height: 34px;
+
+  margin: 0 12px;
+
+  background: #cbd5e1;
+}
+
+
+/* =========================================
+   PROFILE BUTTON
+========================================= */
+
+.profileButton {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 4px 8px;
+
+  border: none;
+
+  background: transparent;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.profileButton:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================
+   PROFILE AVATAR
+========================================= */
+
+.avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #dbeafe,
+    #e0e7ff
+  );
+
+  color: #2563eb;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  border: 1px solid #bfdbfe;
+}
+
+
+/* =========================================
+   PROFILE INFORMATION
+========================================= */
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 2px;
+}
+
+
+/* User Name */
+
+.name {
+  font-size: 12px;
+
+  font-weight: 650;
+
+  color: #1f2937;
+}
+
+
+/* Profile Link */
+
+.role {
+  font-size: 10px;
+
+  color: #64748b;
+}
+
+
+/* =========================================
+   DROPDOWN ARROW
+========================================= */
+
+.arrow {
+  width: 15px;
+  height: 15px;
+
+  margin-left: 2px;
+
+  color: #64748b;
+}
+
+
+/* =========================================
+   PROFILE HOVER
+========================================= */
+
+.profileButton:hover .avatar {
+  border-color: #93c5fd;
+}
+
+.profileButton:hover .name {
+  color: #2563eb;
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .navbar {
+    padding: 0 25px;
+  }
+
+  .logo {
+    min-width: 160px;
+  }
+
+  .navItem {
+    min-width: 75px;
+
+    padding: 0 10px;
+  }
+
+  .profileInfo {
+    display: none;
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVE - SMALL TABLET
+========================================= */
+
+@media (max-width: 750px) {
+
+  .navbar {
+    padding: 0 18px;
+  }
+
+  .logo {
+    min-width: auto;
+  }
+
+  .logoText {
+    display: none;
+  }
+
+  .navigation {
+    margin-left: 10px;
+  }
+
+  .navItem {
+    min-width: 60px;
+
+    padding: 0 8px;
+  }
+
+  .navItem span {
+    font-size: 10px;
+  }
+
+  .navItem.active::after {
+    left: 12px;
+    right: 12px;
+  }
+
+  .divider {
+    margin: 0 5px;
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+
+  .navbar {
+    height: 64px;
+
+    padding: 0 12px;
+  }
+
+  .logoIcon {
+    width: 36px;
+    height: 36px;
+
+    font-size: 18px;
+  }
+
+  .navigation {
+    gap: 2px;
+  }
+
+  .navItem {
+    min-width: 50px;
+
+    padding: 0 5px;
+  }
+
+  .navItem span {
+    display: none;
+  }
+
+  .navItem > svg,
+  .iconWrapper svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .navItem.active::after {
+    left: 10px;
+    right: 10px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .profileButton {
+    padding: 3px;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+}
+
+
+/* =========================================
+   VERY SMALL SCREENS
+========================================= */
+
+@media (max-width: 400px) {
+
+  .navbar {
+    padding: 0 8px;
+  }
+
+  .navigation {
+    margin-left: 5px;
+  }
+
+  .navItem {
+    min-width: 44px;
+  }
+
+  .rightSection {
+    gap: 2px;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .badge {
+    top: -4px;
+    right: -6px;
+  }
+
+}

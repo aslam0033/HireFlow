@@ -10,6 +10,9 @@ import handleResetotp from './controllers/handleResetotp.js';
 import handleForgetPassword from './controllers/handleForgetPassword.js';
 import handleResetPassword from './controllers/handleResetPassword.js';
 import isOtpVerified from './middleware/resetPass.js';
+import handleAppliedJobs from './controllers/handleAppliedJobs.js';
+import handleStats from './controllers/handleStats.js';
+import handleRecommendedJobs from './controllers/handleRecommendedJobs.js';
 
 const app = express()
 
@@ -24,4 +27,7 @@ app.post("/login",handleLogin)
 app.post("/getEmail",handleForgetPassword)
 app.post("/verify-otp",handleResetotp)
 app.post("/reset-password",isOtpVerified,handleResetPassword)
+app.get("/appliedJobs",handleAppliedJobs)
+app.get("/stats",handleStats)
+app.get("/recommendedJobs",handleRecommendedJobs)
 app.listen(process.env.PORT,()=>{console.log("Server Has been started");})

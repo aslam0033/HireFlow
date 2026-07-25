@@ -1,0 +1,185 @@
+.card {
+  width: 100%;
+
+  margin-top: 25px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+        HEADER
+========================= */
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 22px 25px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+
+.title {
+  margin: 0;
+
+  color: #1e293b;
+
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+
+.viewAll {
+  color: #2563eb;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+
+.viewAll:hover {
+  color: #1d4ed8;
+}
+
+
+/* =========================
+        TABLE
+========================= */
+
+.tableContainer {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+.table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 650px;
+}
+
+
+.table th {
+  padding: 15px 25px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+
+.table td {
+  padding: 17px 25px;
+
+  border-top: 1px solid #f1f5f9;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  white-space: nowrap;
+}
+
+
+.table tbody tr {
+  transition: background 0.2s ease;
+}
+
+
+.table tbody tr:hover {
+  background: #f8fafc;
+}
+
+
+/* =========================
+      JOB POSITION
+========================= */
+
+.position {
+  color: #1e293b !important;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+        STATUS
+========================= */
+
+.status {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* Applied */
+
+.applied {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+
+/* Shortlisted */
+
+.shortlisted {
+  background: #f0fdf4;
+
+  color: #16a34a;
+}
+
+
+/* Interview */
+
+.interview {
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+
+/* Rejected */
+
+.rejected {
+  background: #fef2f2;
+
+  color: #dc2626;
+}

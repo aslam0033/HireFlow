@@ -1,0 +1,179 @@
+.resumeCard{
+    width:100%;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:24px;
+    margin-bottom:10px;
+}
+
+.cardHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.cardHeader h2{
+    margin:0;
+    font-size:20px;
+    font-weight:600;
+    color:#1e293b;
+}
+
+.uploadButton{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:8px 14px;
+    border:1px solid #cbd5e1;
+    border-radius:7px;
+    background:#ffffff;
+    color:#2563eb;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s ease;
+}
+
+.uploadButton:hover{
+    background:#eff6ff;
+    border-color:#2563eb;
+}
+
+.uploadButton svg{
+    font-size:16px;
+}
+
+.resumeContent{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:16px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:9px;
+}
+
+.fileIcon{
+    width:45px;
+    height:45px;
+    border-radius:8px;
+    background:#fee2e2;
+    color:#dc2626;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.fileIcon svg{
+    font-size:22px;
+}
+
+.fileDetails{
+    flex:1;
+    min-width:0;
+}
+
+.fileDetails h3{
+    margin:0 0 5px;
+    font-size:15px;
+    font-weight:600;
+    color:#1e293b;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.fileDetails p{
+    margin:0;
+    font-size:13px;
+    color:#64748b;
+}
+
+.actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.actionButton{
+    width:34px;
+    height:34px;
+    padding:0;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    background:#ffffff;
+    color:#64748b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:all 0.2s ease;
+}
+
+.actionButton:hover{
+    background:#eff6ff;
+    border-color:#2563eb;
+    color:#2563eb;
+}
+
+.actionButton svg{
+    font-size:16px;
+}
+
+.deleteButton:hover{
+    background:#fee2e2;
+    border-color:#fecaca;
+    color:#ef4444;
+}
+
+@media(max-width:600px){
+
+    .resumeCard{
+        padding:20px;
+    }
+
+    .cardHeader h2{
+        font-size:18px;
+    }
+
+    .resumeContent{
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .fileDetails{
+        width:calc(100% - 60px);
+    }
+
+    .actions{
+        width:100%;
+        margin-top:5px;
+        padding-left:60px;
+    }
+
+    .actionButton{
+        flex:1;
+    }
+
+}
+
+@media(max-width:400px){
+
+    .cardHeader{
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .uploadButton{
+        padding:8px 10px;
+    }
+
+    .uploadButton span{
+        display:none;
+    }
+
+}

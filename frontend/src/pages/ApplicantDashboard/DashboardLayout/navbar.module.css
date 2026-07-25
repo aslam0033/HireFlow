@@ -1,0 +1,160 @@
+.navbar {
+  height: 70px;
+  background: #ffffff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 30px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ==========================
+        SEARCH
+========================== */
+
+.searchContainer {
+  width: 380px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  background: #f8fafc;
+
+  border: 1px solid #dbe3eb;
+  border-radius: 10px;
+
+  padding: 0 15px;
+}
+
+.searchIcon {
+  color: #64748b;
+  font-size: 18px;
+}
+
+.searchInput {
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding-left: 12px;
+
+  font-size: 15px;
+}
+
+.searchInput::placeholder {
+  color: #94a3b8;
+}
+
+/* ==========================
+        RIGHT SECTION
+========================== */
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ==========================
+      NOTIFICATION
+========================== */
+
+.notificationButton {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #f8fafc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  position: relative;
+
+  font-size: 19px;
+
+  transition: 0.2s;
+}
+
+.notificationButton:hover {
+  background: #e2e8f0;
+}
+
+.notificationDot {
+  width: 8px;
+  height: 8px;
+
+  background: #ef4444;
+
+  border-radius: 50%;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* ==========================
+      PROFILE
+========================== */
+
+.profileButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  padding: 6px 10px;
+
+  border-radius: 10px;
+
+  transition: 0.2s;
+}
+
+.profileButton:hover {
+  background: #f8fafc;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: #2563eb;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.username {
+  color: #1e293b;
+
+  font-size: 15px;
+  font-weight: 600;
+}

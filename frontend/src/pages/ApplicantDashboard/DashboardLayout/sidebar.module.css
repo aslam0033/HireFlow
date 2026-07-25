@@ -1,0 +1,154 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #ffffff;
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 25px 15px;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logoContainer {
+  padding: 0 15px;
+  margin-bottom: 40px;
+}
+
+.logo {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+/* =========================
+   NAV ITEM
+========================= */
+
+.navItem {
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0 15px;
+
+  border-radius: 8px;
+
+  color: black;
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.icon {
+  width: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 18px;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.navItem:hover {
+  background: #1e293b;
+  color: #ffffff;
+}
+
+
+/* =========================
+   ACTIVE LINK
+========================= */
+
+.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
+.bottomNavigation {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.logoutButton {
+  width: 100%;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: black;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background: #1e293b;
+  color: #ffffff;
+}
