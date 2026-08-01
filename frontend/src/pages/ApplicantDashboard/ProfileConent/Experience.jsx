@@ -1,89 +1,110 @@
-import { FiPlus, FiEdit2, FiMapPin } from "react-icons/fi";
+import {
+  FiPlus,
+  FiEdit2,
+  FiMapPin,
+  FiBriefcase,
+} from "react-icons/fi";
 import styles from "./experience.module.css";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function Experience() {
-  const experiences = [
-    {
-      id: 1,
-      jobTitle: "Frontend Developer",
-      company: "ABC Technologies",
-      duration: "Jan 2025 - Present",
-      location: "Bangalore, India",
-      description:
-        "Developing responsive web applications using React, JavaScript, and Tailwind CSS.",
-    },
-    {
-      id: 2,
-      jobTitle: "Web Development Intern",
-      company: "XYZ Solutions",
-      duration: "Jun 2024 - Dec 2024",
-      location: "Remote",
-      description:
-        "Worked on frontend development and collaborated with the team to build user-friendly web applications.",
-    },
-    {
-      id: 3,
-      jobTitle: "Junior Web Developer",
-      company: "Tech Company",
-      duration: "Jan 2024 - May 2024",
-      location: "Pune, India",
-      description:
-        "Built and maintained web pages using modern frontend technologies.",
-    },
-  ];
+function Experience({ experiences }) {
+  const [experiencesList, setExperiencesList] = useState(
+    experiences || []
+  );
+  const [showall, setShowall] = useState(false);
 
-  const visibleExperiences = experiences.slice(0, 2);
+  useEffect(() => {
+    setExperiencesList(experiences || []);
+  }, [experiences]);
+
+  const displayExperiences = showall
+    ? experiencesList
+    : experiencesList.slice(0, 2);
 
   return (
     <div className={styles.experienceCard}>
       <div className={styles.cardHeader}>
         <h2>Experience</h2>
 
-        <button className={styles.addButton}>
+        <Link
+          className={styles.addButton}
+          to="/applicant/add-experience"
+        >
           <FiPlus />
           <span>Add Experience</span>
-        </button>
+        </Link>
       </div>
 
       <div className={styles.experienceList}>
-        {visibleExperiences.map((experience) => (
+        {displayExperiences.map((experience, index) => (
           <div
             className={styles.experienceItem}
-            key={experience.id}
+            key={index}
           >
+            {/* Timeline */}
+            <div className={styles.timeline}>
+              <div className={styles.timelineDot}></div>
+
+              {index !== displayExperiences.length - 1 && (
+                <div className={styles.timelineLine}></div>
+              )}
+            </div>
+
+            {/* Experience Details */}
             <div className={styles.experienceContent}>
               <div className={styles.titleRow}>
-                <h3>{experience.jobTitle}</h3>
+                <div>
+                  <h3>{experience.position}</h3>
 
-                <button className={styles.editButton}>
+                  <p className={styles.company}>
+                    {experience.company}
+                  </p>
+                </div>
+
+                <Link
+                  to={`/applicant/edit-experience/${experience._id}`}
+                  className={styles.editButton}
+                >
                   <FiEdit2 />
-                </button>
+                </Link>
               </div>
 
-              <p className={styles.company}>
-                {experience.company}
+              <p className={styles.jobType}>
+                {experience.jobType}
               </p>
 
-              <p className={styles.duration}>
-                {experience.duration}
+              {/* Experience Time */}
+              <p className={styles.experienceTime}>
+                <FiBriefcase />
+                <span>
+                  {experience.experienceTime}{" "}
+                  {experience.experienceTime == 1
+                    ? "year"
+                    : "years"}{" "}
+                </span>
               </p>
+              <div className={styles.duration}>
+                <span>
+                {experience.currentlyWorking?"Currently working":""}
+              </span>
+              </div>
 
               <div className={styles.location}>
                 <FiMapPin />
                 <span>{experience.location}</span>
               </div>
-
-              <p className={styles.description}>
-                {experience.description}
-              </p>
             </div>
           </div>
         ))}
       </div>
 
-      {experiences.length > 2 && (
-        <button className={styles.viewAllButton}>
-          View All Experience
+      {experiencesList.length > 2 && (
+        <button
+          className={styles.viewAllButton}
+          onClick={() => setShowall(!showall)}
+        >
+          {showall ? "View Less" : "View More"}
         </button>
       )}
     </div>

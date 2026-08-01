@@ -1,3 +1,4 @@
+import applicantProfileModel from "../models/applicantProfile.js"
 import pendingUserModel from "../models/pendinguser.js"
 import userModel from "../models/user.js"
 
@@ -36,6 +37,13 @@ const handleVerification = async (req, res) => {
         }
         await userModel.create(newUser)
 
+        //create profile
+        const newprofile = {
+            email:user.email
+        }
+        if(user.role == "applicant"){
+            await applicantProfileModel.create(newprofile)
+        }
         // delete from pending user 
         const id = user._id;
         await pendingUserModel.findByIdAndDelete(id);

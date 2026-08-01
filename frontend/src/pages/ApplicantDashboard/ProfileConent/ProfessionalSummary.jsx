@@ -1,24 +1,48 @@
+import { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import styles from "./professionalSummary.module.css";
 
-function ProfessionalSummary() {
-  const summary =
-    "Full Stack Developer with a strong foundation in React, JavaScript, Node.js, Express.js, and MongoDB. Passionate about building scalable web applications, solving complex problems, and continuously learning new technologies.";
+function ProfessionalSummary({ summary }) {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className={styles.summaryCard}>
+
+      {/* Card Header */}
       <div className={styles.cardHeader}>
         <h2>Professional Summary</h2>
 
-        <button className={styles.editButton}>
+        <Link
+          className={styles.editButton}
+          to="/applicant/edit-professionalSummary"
+        >
           <FiEdit2 />
           <span>Edit</span>
-        </button>
+        </Link>
       </div>
 
-      <p className={styles.summaryText}>
-        {summary}
-      </p>
+      {/* Summary Content */}
+      <div className={styles.summaryContent}>
+        <p
+          className={`${styles.summaryText} ${
+            isExpanded ? styles.expanded : ""
+          }`}
+        >
+          {summary || "No professional summary added yet."}
+        </p>
+
+        {/* View More / View Less */}
+        {summary && summary.length > 180 && (
+          <button
+            className={styles.viewMoreButton}
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? "View less" : "View more"}
+          </button>
+        )}
+      </div>
+
     </div>
   );
 }

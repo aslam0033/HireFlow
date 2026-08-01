@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className={styles.homeContainer}>
 
-      <header className={styles.navbar}>
+      {/* <header className={styles.navbar}>
 
         <h2 className={styles.logo}>
           HireFlow
@@ -17,7 +17,7 @@ function Home() {
             <Link className={styles.navItem} to='/companies'>Companies</Link>
             <Link className={styles.navItem} to='/about'>About</Link>
         </nav>
-      </header>
+      </header> */}
 
       <main className={styles.heroSection}>
 

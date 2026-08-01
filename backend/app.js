@@ -13,6 +13,14 @@ import isOtpVerified from './middleware/resetPass.js';
 import handleAppliedJobs from './controllers/handleAppliedJobs.js';
 import handleStats from './controllers/handleStats.js';
 import handleRecommendedJobs from './controllers/handleRecommendedJobs.js';
+import handleHeader from './controllers/applicantProfile/handleHeader.js';
+import handleProfile from './controllers/applicantProfile/handleprofile.js';
+import handlePersonalInfo from './controllers/applicantProfile/handlePersonlInfo.js';
+import handleSummary from './controllers/applicantProfile/handleSummary.js';
+import handleAddSkill from './controllers/applicantProfile/handleAddSkill.js';
+import handleRemoveSkill from './controllers/applicantProfile/handleRemoveSkill.js';
+import handleAddExperience from './controllers/applicantProfile/handleAddExperience.js';
+import handleGetEditExperience from './controllers/applicantProfile/handleGetEditExperience.js';
 
 const app = express()
 
@@ -30,4 +38,12 @@ app.post("/reset-password",isOtpVerified,handleResetPassword)
 app.get("/appliedJobs",handleAppliedJobs)
 app.get("/stats",handleStats)
 app.get("/recommendedJobs",handleRecommendedJobs)
+app.post("/applicant-profile",handleProfile)
+app.post("/edit-header",handleHeader)
+app.post("/edit-personalInfo",handlePersonalInfo)
+app.post("/edit-professionalSummary",handleSummary)
+app.post("/add-skill",handleAddSkill)
+app.delete("/delete-skill",handleRemoveSkill)
+app.post("/add-experience",handleAddExperience)
+app.post("/edit-experience/:id",handleGetEditExperience)
 app.listen(process.env.PORT,()=>{console.log("Server Has been started");})

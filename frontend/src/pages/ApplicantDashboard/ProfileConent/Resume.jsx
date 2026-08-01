@@ -8,11 +8,6 @@ import {
 import styles from "./resume.module.css";
 
 function Resume() {
-  const resume = {
-    name: "Aslam_Mujawar_Resume.pdf",
-    size: "1.2 MB",
-    uploadedOn: "Uploaded on July 20, 2026",
-  };
 
   return (
     <div className={styles.resumeCard}>
@@ -31,10 +26,10 @@ function Resume() {
         </div>
 
         <div className={styles.fileDetails}>
-          <h3>{resume.name}</h3>
+          {/* <h3>{resume.name}</h3> */}
 
           <p>
-            {resume.size} • {resume.uploadedOn}
+            {/* {resume.size} • {resume.uploadedOn} */}
           </p>
         </div>
 

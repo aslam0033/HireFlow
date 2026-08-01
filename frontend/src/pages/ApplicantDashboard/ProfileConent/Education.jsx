@@ -1,32 +1,9 @@
 import { FiPlus, FiEdit2, FiMapPin } from "react-icons/fi";
 import styles from "./education.module.css";
+import { useState } from "react";
 
 function Education() {
-  const education = [
-    {
-      id: 1,
-      degree: "Bachelor of Computer Applications",
-      institution: "XYZ College",
-      duration: "2023 - 2026",
-      location: "Bangalore, India",
-    },
-    {
-      id: 2,
-      degree: "Higher Secondary Education",
-      institution: "ABC Junior College",
-      duration: "2021 - 2023",
-      location: "Bangalore, India",
-    },
-    {
-      id: 3,
-      degree: "Secondary School Education",
-      institution: "ABC High School",
-      duration: "2011 - 2021",
-      location: "Bangalore, India",
-    },
-  ];
-
-  const visibleEducation = education.slice(0, 2);
+ const [education,setEducation] = useState([])
 
   return (
     <div className={styles.educationCard}>
@@ -40,7 +17,7 @@ function Education() {
       </div>
 
       <div className={styles.educationList}>
-        {visibleEducation.map((item) => (
+        {education.map((item) => (
           <div
             className={styles.educationItem}
             key={item.id}

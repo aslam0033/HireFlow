@@ -1,22 +1,18 @@
 import { FiEdit2, FiMail, FiPhone, FiMapPin } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import styles from "./personalInfo.module.css";
 
-function PersonalInfo() {
-  const personalInfo = {
-    email: "aslam@example.com",
-    phone: "+91 98765 43210",
-    location: "Bangalore, India",
-  };
-
+function PersonalInfo({personalInfo}) {
+ 
   return (
     <div className={styles.infoCard}>
       <div className={styles.cardHeader}>
         <h2>Personal Information</h2>
 
-        <button className={styles.editButton}>
+        <Link to='/applicant/edit-personalInfo' className={styles.editButton}>
           <FiEdit2 />
           <span>Edit</span>
-        </button>
+        </Link>
       </div>
 
       <div className={styles.infoGrid}>
@@ -28,7 +24,7 @@ function PersonalInfo() {
           <div>
             <p className={styles.label}>Email</p>
             <p className={styles.value}>
-              {personalInfo.email}
+              {personalInfo.contactEmail}
             </p>
           </div>
         </div>

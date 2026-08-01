@@ -1,48 +1,47 @@
-import { FiEdit2, FiMapPin } from "react-icons/fi";
+import { FiEdit2, FiMapPin, FiBriefcase } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import styles from "./profileHeader.module.css";
 
-function ProfileHeader() {
-  const user = {
-    name: "Aslam Mujawar",
-    headline: "Full Stack Developer",
-    location: "India",
-    profilePhoto: "",
-  };
-
+function ProfileHeader({ header }) {
   return (
     <div className={styles.profileCard}>
       <div className={styles.profileContent}>
         <div className={styles.profileImage}>
-          {user.profilePhoto ? (
+          {header.profilePhoto ? (
             <img
-              src={user.profilePhoto}
-              alt={user.name}
+              src={header.profilePhoto}
+              alt={header.name}
             />
           ) : (
             <span>
-              {user.name.charAt(0).toUpperCase()}
+              {header.name?.charAt(0).toUpperCase()}
             </span>
           )}
         </div>
 
         <div className={styles.profileDetails}>
-          <h1>{user.name}</h1>
+          <h1>{header.name ? header.name : "Name"}</h1>
 
           <p className={styles.headline}>
-            {user.headline}
+            {header.position ? header.position : "Position"}
           </p>
 
           <div className={styles.location}>
             <FiMapPin />
-            <span>{user.location}</span>
+            <span>
+              {header.location ? header.location : "Location"}
+            </span>
           </div>
         </div>
       </div>
 
-      <button className={styles.editButton}>
+      <Link
+        to="/applicant/edit-header"
+        className={styles.editButton}
+      >
         <FiEdit2 />
         <span>Edit</span>
-      </button>
+      </Link>
     </div>
   );
 }

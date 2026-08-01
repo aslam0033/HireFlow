@@ -39,7 +39,8 @@ const handleLogin = async (req, res) => {
         })
 
         return res.send({
-            message: "User Login successfull"
+            message: "User Login successfull",
+            role:user.role
         })
     }
     catch (e) {

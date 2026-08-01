@@ -1,36 +1,9 @@
 import { FiPlus, FiEdit2, FiExternalLink } from "react-icons/fi";
 import styles from "./projects.module.css";
+import { useState } from "react";
 
 function Projects() {
-  const projects = [
-    {
-      id: 1,
-      name: "HireFlow",
-      description:
-        "A full-stack job portal and ATS platform that connects applicants and recruiters.",
-      technologies: ["React", "Node.js", "Express.js", "MongoDB"],
-      link: "#",
-    },
-    {
-      id: 2,
-      name: "Quiz Application",
-      description:
-        "A real-time quiz application where users can participate in live quizzes.",
-      technologies: ["React", "Node.js", "Socket.io", "Redis"],
-      link: "#",
-    },
-    {
-      id: 3,
-      name: "Admin Dashboard",
-      description:
-        "A responsive admin dashboard for monitoring and visualizing application data.",
-      technologies: ["React", "Tailwind CSS", "Recharts"],
-      link: "#",
-    },
-  ];
-
-  const visibleProjects = projects.slice(0, 2);
-
+  const[projects,SetProjects] = useState([])
   return (
     <div className={styles.projectsCard}>
       <div className={styles.cardHeader}>
@@ -43,7 +16,7 @@ function Projects() {
       </div>
 
       <div className={styles.projectsList}>
-        {visibleProjects.map((project) => (
+        {projects.map((project) => (
           <div
             className={styles.projectItem}
             key={project.id}

@@ -4,36 +4,11 @@ import {
   FiExternalLink,
 } from "react-icons/fi";
 import styles from "./certifications.module.css";
+import { useState } from "react";
 
 function Certifications() {
-  const certifications = [
-    {
-      id: 1,
-      name: "Full Stack Web Development",
-      organization: "XYZ Academy",
-      issueDate: "Issued: June 2025",
-      credentialId: "ABC123456",
-      credentialLink: "#",
-    },
-    {
-      id: 2,
-      name: "React.js Development",
-      organization: "Online Learning Platform",
-      issueDate: "Issued: March 2025",
-      credentialId: "XYZ789012",
-      credentialLink: "#",
-    },
-    {
-      id: 3,
-      name: "JavaScript Algorithms and Data Structures",
-      organization: "Online Learning Platform",
-      issueDate: "Issued: January 2025",
-      credentialId: "JS456789",
-      credentialLink: "#",
-    },
-  ];
-
-  const visibleCertifications = certifications.slice(0, 2);
+  const [certifications, Setcertifications] = useState([])
+  
 
   return (
     <div className={styles.certificationsCard}>
@@ -47,7 +22,7 @@ function Certifications() {
       </div>
 
       <div className={styles.certificationsList}>
-        {visibleCertifications.map((certification) => (
+        {certifications.map((certification) => (
           <div
             className={styles.certificationItem}
             key={certification.id}

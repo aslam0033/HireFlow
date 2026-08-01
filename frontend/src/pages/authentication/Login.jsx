@@ -7,8 +7,7 @@ function Login() {
   //getting user details
   const [userData,setUserData] = useState({
     email:"",
-    password:"",
-    role:""
+    password:""
   })
   //alert setting
   const [alert, setAlert] = useState({
@@ -43,15 +42,24 @@ function Login() {
       body:JSON.stringify(user)
     })
     response = await response.json();
+    
     if(response.message){
       setAlert({
           show: true,
           message: response.message,
           type: "success"
         });
-        setTimeout(() => {
-          navigate("/profile");
+        sessionStorage.setItem("loggedInEmail",email)
+        if(response.role == "applicant"){
+          setTimeout(() => {
+          navigate("/applicant");
         }, 2000);
+        }
+        else{
+          setTimeout(() => {
+          navigate("/recruiter");
+        }, 2000);
+        }
     }
     else {
         setAlert({

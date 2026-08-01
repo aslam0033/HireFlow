@@ -1,24 +1,25 @@
-.experienceCard{
-    width:100%;
-    background:#ffffff;
-    border:1px solid #e2e8f0;
-    border-radius:12px;
-    padding:24px;
-    margin-bottom:10px;
+.experienceCard {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-.cardHeader{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
 }
 
-.cardHeader h2{
-    margin:0;
-    font-size:20px;
-    font-weight:600;
-    color:#1e293b;
+.cardHeader h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f1f1f;
 }
 
 .addButton{
@@ -32,6 +33,7 @@
     background:#ffffff;
     color:#2563eb;
     font-size:14px;
+    text-decoration: none;
     font-weight:500;
     cursor:pointer;
     transition:all 0.2s ease;
@@ -46,140 +48,155 @@
     font-size:16px;
 }
 
-.experienceList{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
+.experienceList {
+  display: flex;
+  flex-direction: column;
 }
 
-.experienceItem{
-    padding-bottom:18px;
-    border-bottom:1px solid #e2e8f0;
+.experienceItem {
+  display: flex;
+  position: relative;
+  padding-bottom: 28px;
 }
 
-.experienceItem:last-child{
-    border-bottom:none;
-    padding-bottom:0;
+.experienceItem:last-child {
+  padding-bottom: 0;
 }
 
-.titleRow{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+.experienceTime {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.titleRow h3{
-    margin:0;
-    font-size:17px;
-    font-weight:600;
-    color:#1e293b;
+.experienceTime svg {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+/* Timeline section */
+
+.timeline {
+  width: 32px;
+  min-width: 32px;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.editButton{
-    width:32px;
-    height:32px;
-    padding:0;
-    border:none;
-    border-radius:6px;
-    background:transparent;
-    color:#64748b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:all 0.2s ease;
+.timelineDot {
+  width: 12px;
+  height: 12px;
+  background: #0a66c2;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #0a66c2;
+  position: relative;
+  z-index: 2;
+  margin-top: 5px;
 }
 
-.editButton:hover{
-    background:#f1f5f9;
-    color:#2563eb;
+.timelineLine {
+  position: absolute;
+  top: 17px;
+  bottom: -28px;
+  width: 2px;
+  background: #d8d8d8;
 }
 
-.editButton svg{
-    font-size:16px;
+/* Experience content */
+
+.experienceContent {
+  flex: 1;
+  padding-left: 14px;
 }
 
-.company{
-    margin:6px 0 4px;
-    font-size:15px;
-    font-weight:500;
-    color:#475569;
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
 }
 
-.duration{
-    margin:0 0 8px;
-    font-size:13px;
-    color:#64748b;
+.titleRow h3 {
+  margin: 0 0 5px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f1f1f;
 }
 
-.location{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    margin-bottom:10px;
-    font-size:13px;
-    color:#64748b;
+.company {
+  margin: 0;
+  font-size: 15px;
+  color: #444444;
+  font-weight: 500;
 }
 
-.location svg{
-    font-size:15px;
+.jobType {
+  margin: 7px 0 0;
+  font-size: 14px;
+  color: #666666;
 }
 
-.description{
-    margin:0;
-    font-size:14px;
-    line-height:1.6;
-    color:#475569;
+.duration {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666666;
 }
 
-.viewAllButton{
-    display:block;
-    margin:18px auto 0;
-    padding:8px 18px;
-    border:none;
-    background:transparent;
-    color:#2563eb;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.2s ease;
+.location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+  color: #666666;
+  font-size: 14px;
 }
 
-.viewAllButton:hover{
-    color:#1d4ed8;
-    text-decoration:underline;
+.location svg {
+  font-size: 15px;
 }
 
-@media(max-width:600px){
+/* Edit button */
 
-    .experienceCard{
-        padding:20px;
-    }
-
-    .cardHeader h2{
-        font-size:18px;
-    }
-
-    .titleRow h3{
-        font-size:16px;
-    }
-
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: #555555;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-@media(max-width:400px){
+.editButton:hover {
+  background: #f0f2f5;
+  color: #0a66c2;
+}
 
-    .cardHeader{
-        align-items:flex-start;
-        gap:10px;
-    }
+/* View all */
 
-    .addButton{
-        padding:8px 10px;
-    }
+.viewAllButton {
+  width: 100%;
+  margin-top: 24px;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  background: transparent;
+  color: #0a66c2;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-    .addButton span{
-        display:none;
-    }
-
+.viewAllButton:hover {
+  background: #f5f9fc;
 }

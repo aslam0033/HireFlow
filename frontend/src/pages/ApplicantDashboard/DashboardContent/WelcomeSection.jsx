@@ -17,7 +17,7 @@ function WelcomeSection() {
         </p>
       </div>
 
-      <Link  className={styles.findJobButton} to='/find-jobs'>
+      <Link  className={styles.findJobButton} to='/applicant/jobs'>
         <FiSearch />
         Find Jobs
       </Link>
