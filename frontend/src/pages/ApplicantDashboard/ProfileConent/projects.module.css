@@ -1,195 +1,238 @@
-.projectsCard{
-    width:100%;
-    background:#ffffff;
-    border:1px solid #e2e8f0;
-    border-radius:12px;
-    padding:24px;
-    margin-bottom:10px;
+.projectsCard {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
-.cardHeader{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+/* Header */
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
-.cardHeader h2{
-    margin:0;
-    font-size:20px;
-    font-weight:600;
-    color:#1e293b;
+.cardHeader h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
 }
 
-.addButton{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    padding:8px 14px;
-    border:1px solid #cbd5e1;
-    border-radius:7px;
-    background:#ffffff;
-    color:#2563eb;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.2s ease;
+/* Add Button */
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border: 1px solid #2563eb;
+  border-radius: 7px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.addButton:hover{
-    background:#eff6ff;
-    border-color:#2563eb;
+.addButton:hover {
+  background-color: #1d4ed8;
 }
 
-.addButton svg{
-    font-size:16px;
+.addButton svg {
+  font-size: 16px;
 }
 
-.projectsList{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
+/* Projects List */
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
 }
 
-.projectItem{
-    padding-bottom:18px;
-    border-bottom:1px solid #e2e8f0;
+/* Individual Project */
+
+.projectItem {
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.projectItem:last-child{
-    border-bottom:none;
-    padding-bottom:0;
+.projectItem:first-child {
+  padding-top: 0;
 }
 
-.projectHeader{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+.projectItem:last-child {
+  border-bottom: none;
 }
 
-.projectHeader h3{
-    margin:0;
-    font-size:17px;
-    font-weight:600;
-    color:#1e293b;
+/* Project Header */
+
+.projectHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-.editButton{
-    width:32px;
-    height:32px;
-    padding:0;
-    border:none;
-    border-radius:6px;
-    background:transparent;
-    color:#64748b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:all 0.2s ease;
+.projectHeader h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
 }
 
-.editButton:hover{
-    background:#f1f5f9;
-    color:#2563eb;
+.projectDuration {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #6b7280;
 }
 
-.editButton svg{
-    font-size:16px;
+/* Edit Button */
+
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.description{
-    margin:8px 0 12px;
-    font-size:14px;
-    line-height:1.6;
-    color:#475569;
+.editButton:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
 }
 
-.technologies{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-bottom:14px;
+.editButton svg {
+  font-size: 17px;
 }
 
-.technologyTag{
-    padding:5px 10px;
-    background:#f1f5f9;
-    border:1px solid #e2e8f0;
-    border-radius:5px;
-    color:#475569;
-    font-size:12px;
-    font-weight:500;
+/* Description */
+
+.description {
+  margin: 14px 0 16px;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-.projectLink{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    color:#2563eb;
-    font-size:14px;
-    font-weight:500;
-    text-decoration:none;
-    transition:color 0.2s ease;
+/* Skills */
+
+.skills {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-.projectLink:hover{
-    color:#1d4ed8;
+.skillsLabel {
+  padding-top: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
 }
 
-.projectLink svg{
-    font-size:15px;
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
 }
 
-.viewAllButton{
-    display:block;
-    margin:18px auto 0;
-    padding:8px 18px;
-    border:none;
-    background:transparent;
-    color:#2563eb;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.2s ease;
+.skillTag {
+  padding: 5px 10px;
+  background-color: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 5px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 500;
 }
 
-.viewAllButton:hover{
-    color:#1d4ed8;
-    text-decoration:underline;
+/* Project Link */
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-@media(max-width:600px){
-
-    .projectsCard{
-        padding:20px;
-    }
-
-    .cardHeader h2{
-        font-size:18px;
-    }
-
-    .projectHeader h3{
-        font-size:16px;
-    }
-
+.projectLink:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
 }
 
-@media(max-width:400px){
+.projectLink svg {
+  font-size: 15px;
+}
 
-    .cardHeader{
-        align-items:flex-start;
-        gap:10px;
-    }
+/* View All Button */
 
-    .addButton{
-        padding:8px 10px;
-    }
+.viewAllButton {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-    .addButton span{
-        display:none;
-    }
+.viewAllButton:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
 
+/* Responsive */
+
+@media (max-width: 600px) {
+  .projectsCard {
+    padding: 18px;
+  }
+
+  .cardHeader h2 {
+    font-size: 18px;
+  }
+
+  .addButton span {
+    display: none;
+  }
+
+  .addButton {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .projectHeader h3 {
+    font-size: 16px;
+  }
+
+  .skills {
+    flex-direction: column;
+    gap: 7px;
+  }
 }

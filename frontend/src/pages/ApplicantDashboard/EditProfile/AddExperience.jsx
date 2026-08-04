@@ -1,44 +1,31 @@
 import { FiPlus } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./addExperience.module.css";
 import { useActionState, useState } from "react";
+import post from "../../../utils/post";
 
 function AddExperience() {
   const [isWorking,setIsworking] = useState(false)
   const [alert, setAlert] = useState({
     show: false,
     message: "",
-    type: "", // success or error
+    type: "", 
   });
+  const navigate = useNavigate()
   const handleFormData = async (prevData, formData) => {
-    const position = formData.get("position")
-    const company = formData.get("company")
-    const location = formData.get("location")
-    const startDate = new Date(formData.get("startDate"))
-    const endDate = new Date(formData.get("endDate"))
-    const jobType = formData.get("jobType")
-    const description = formData.get("description")
-    const email = sessionStorage.getItem("loggedInEmail")
     const experienceDetails = {
-      email: email,
-      position: position,
-      company: company,
-      location: location,
-      jobType:jobType,
-      startDate: startDate,
-      endDate: endDate,
+      position:formData.get("position"),
+      company: formData.get("company"),
+      location: formData.get("location"),
+      jobType:formData.get("jobType"),
+      startDate: new Date(formData.get("startDate")),
+      endDate: new Date(formData.get("endDate")),
       isWorking: isWorking,
-      description: description,
+      description: formData.get("description"),
     }
     try {
-      let response = await fetch("http://localhost:3500/add-experience", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify(experienceDetails)
-      })
-      response = await response.json()
+      let url = "http://localhost:3500/add-experience"
+      let response = await post(url,experienceDetails)
       if (response.message) {
         setAlert({
           show: true,
@@ -51,7 +38,8 @@ function AddExperience() {
             message: "",
             type: ""
           })
-        }, 1000);
+          navigate("/applicant/profile#experience")
+        }, 500);
       }
       else {
         setAlert({
@@ -188,7 +176,7 @@ function AddExperience() {
 
           <div className={styles.actions}>
             <Link
-              to="/applicant/profile"
+              to="/applicant/profile#experience"
               className={styles.cancelButton}
             >
               Cancel

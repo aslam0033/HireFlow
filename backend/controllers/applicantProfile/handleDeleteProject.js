@@ -1,23 +1,23 @@
 import applicantProfileModel from "../../models/applicantProfile.js";
 
-const handleGetEditExperience = async (req, res) => {
+const handleDeleteProject = async (req, res) => {
   try {
     let id = req.params.id
-    let email = req.user.email
+    const email = req.user.email
     
     let profile = await applicantProfileModel.findOne({ email: email });
-    let experiences = profile.experiences;
 
-    let experience = experiences.filter((exp)=>exp._id == id)
-    return res.send({
-      data:experience[0]
+    profile.projects = profile.projects.filter((exp)=>exp._id != id)
+    
+    await profile.save()
+      return res.send({
+      message:"Project deleted successfully"
     });
   } catch (e) {
-    console.log(e);
     
     return res.send({
       error: "something went wrong! please try again later"
     });
   }
 };
-export default handleGetEditExperience;
+export default handleDeleteProject;

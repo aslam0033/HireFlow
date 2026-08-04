@@ -49,7 +49,7 @@ function RecentApplications() {
 
           <tbody>
 
-            {applications.map((application) => (
+            {applications?.map((application) => (
 
               <tr key={application._id}>
 

@@ -1,29 +1,43 @@
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import styles from "./editProfessionalSummary.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import get from '../../../utils/get'
+import post from '../../../utils/post'
 
 function EditProfessionalSummary() {
-    const [alert, setAlert] = useState({
+  const [summary,setSummary] = useState()
+  const [alert, setAlert] = useState({
     show: false,
     type: "",
     message: ""
   })
+  useEffect(() => {
+    try {
+      const url = "http://localhost:3500/applicant-profile"
+      const getData = async () => {
+        let response = await get(url);
+        let data = response.data
+        setSummary(data.summary)
+      }
+      getData()
+    }
+    catch (e) {
+      setAlert({
+        show:true,
+        type:"error",
+        message:"can't load data"
+      })
+    }
+    
+  },[])
   const navigate = useNavigate()
   const handleform = async (prevData, formData) => {
-    const email = sessionStorage.getItem("loggedInEmail")
     const personalInfo = {
-      loginEmail: email,
-      summary:formData.get("summary")
+      summary: formData.get("summary")
     }
     try {
-      let response = await fetch("http://localhost:3500/edit-professionalSummary", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify(personalInfo)
-      })
-      response = await response.json()
+      let url = "http://localhost:3500/edit-professionalSummary"
+      let response = await post(url,personalInfo)
       if (response.message) {
         setAlert({
           show: true,
@@ -32,7 +46,7 @@ function EditProfessionalSummary() {
         })
         setTimeout(() => {
           navigate("/applicant/profile")
-        }, 1500);
+        }, 500);
       }
       else {
         setAlert({
@@ -57,24 +71,24 @@ function EditProfessionalSummary() {
     <div className={styles.editOverlay}>
       <div className={styles.editContainer}>
         {alert.show && (
-                <div className={`${styles.alert} ${styles[alert.type]}`}>
-                  <span>{alert.message}</span>
-        
-                  <button
-                    type="button"
-                    className={styles.closeAlert}
-                    onClick={() =>
-                      setAlert({
-                        show: false,
-                        message: "",
-                        type: "",
-                      })
-                    }
-                  >
-                    ×
-                  </button>
-                </div>
-              )}
+          <div className={`${styles.alert} ${styles[alert.type]}`}>
+            <span>{alert.message}</span>
+
+            <button
+              type="button"
+              className={styles.closeAlert}
+              onClick={() =>
+                setAlert({
+                  show: false,
+                  message: "",
+                  type: "",
+                })
+              }
+            >
+              ×
+            </button>
+          </div>
+        )}
         {/* Header */}
         <div className={styles.header}>
           <div>
@@ -97,6 +111,7 @@ function EditProfessionalSummary() {
             <textarea
               id="summary"
               name="summary"
+              defaultValue={summary}
               placeholder="Write a brief summary about your professional background, skills, experience, and career goals..."
               rows="7"
             ></textarea>

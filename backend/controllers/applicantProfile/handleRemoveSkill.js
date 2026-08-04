@@ -2,12 +2,13 @@ import applicantProfileModel from "../../models/applicantProfile.js"
 
 const handleRemoveSkill = async (req,res) => {
     try{
-        const {email,skill} = req.body
-        let skills = await applicantProfileModel.findOne({email:email})
+        let email = req.user.email
+        let skill = req.params.skill
+        let profile = await applicantProfileModel.findOne({email:email})
         
-        skills = skills.skills
-        skills = skills.filter((s)=> s != skill)
-         await applicantProfileModel.findOneAndUpdate({email:email},{skills:skills})
+        profile.skills = profile.skills.filter((s)=> s != skill)
+        await profile.save()
+
     return res.send({
         message:"skill removed successfully"
     })

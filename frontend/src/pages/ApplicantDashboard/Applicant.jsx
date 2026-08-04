@@ -14,6 +14,12 @@ import EditProfessionalSummary from "./EditProfile/EditProfessionalSummary";
 import EditSkills from "./EditProfile/EditSkills";
 import AddExperience from "./EditProfile/AddExperience";
 import EditExperence from "./EditProfile/EditExperence";
+import AddEducation from "./EditProfile/AddEducation";
+import EditEducation from "./EditProfile/EditEducation";
+import AddProject from "./EditProfile/AddProject";
+import EditProject from "./EditProfile/EditProject";
+import AddCertification from "./EditProfile/AddCertification";
+import EditCertification from "./EditProfile/EditCertification";
 
 function Applicant() {
   return (
@@ -47,6 +53,12 @@ function Applicant() {
                 <Route path="/edit-skills" element={<EditSkills/>}/>
                 <Route path="/add-experience" element={<AddExperience/>}/>
                 <Route path="/edit-experience/:id" element={<EditExperence/>}/>
+                <Route path="/add-education" element={<AddEducation/>}/>
+                <Route path="/edit-education/:id" element={<EditEducation/>}/>
+                <Route path="/add-project" element={<AddProject/>}/>
+                <Route path="/edit-project/:id" element={<EditProject/>}/>
+                <Route path="/add-certification" element={<AddCertification/>}/>
+                <Route path="/edit-certification/:id" element={<EditCertification/>}/>
             </Routes>
         </main>
 

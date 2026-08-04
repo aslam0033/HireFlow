@@ -2,6 +2,7 @@ import { FiPlus, FiX } from "react-icons/fi";
 import styles from "./skills.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import deleteRequest from '../../../utils/delete'
 
 function Skills({ skillsSet }) {
   const [skills, setSkills] = useState(skillsSet || []);
@@ -17,30 +18,11 @@ function Skills({ skillsSet }) {
     : skills.slice(0, 3);
 
   const handleRemove = async (skill) => {
-    const email = sessionStorage.getItem("loggedInEmail");
-
-    const skillObj = {
-      skill: skill,
-      email: email
-    };
 
     try {
-      let response = await fetch(
-        "http://localhost:3500/delete-skill",
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(skillObj)
-        }
-      );
-
-      // You were missing await here
-      response = await response.json();
-
+      let url = `http://localhost:3500/delete-skill/${skill}`
+      let response = await deleteRequest(url)
       if (response.message) {
-        // Remove deleted skill from local state
         setSkills((prevSkills) => prevSkills.filter(
             (currentSkill) => currentSkill !== skill
           )
@@ -49,13 +31,12 @@ function Skills({ skillsSet }) {
         return false;
       }
     } catch (e) {
-      console.log(e);
       return false;
     }
   };
 
   return (
-    <div className={styles.skillsCard}>
+    <div className={styles.skillsCard} id="skills">
       <div className={styles.cardHeader}>
         <h2>Skills</h2>
 

@@ -8,6 +8,8 @@ import Education from '../ProfileConent/Education'
 import Projects from '../ProfileConent/Projects'
 import Certifications from '../ProfileConent/Certifications'
 import Resume from '../ProfileConent/Resume'
+import post from '../../../utils/post'
+import get from '../../../utils/get'
 
 function ApplicantProfile() {
   const email = sessionStorage.getItem("loggedInEmail")
@@ -27,21 +29,37 @@ function ApplicantProfile() {
   const[summary,setSummary] = useState()
   const [skillsSet,SetSkills] = useState([])
   const [experiences,setExperiences] = useState([])
-  
+  const [education,setEducation] = useState([])
+  const [projects,setProjects] = useState([])
+  const [certifications,setCertifications] = useState([])
+
   useEffect(()=>{
-     const getData = async() => {
-    try{
-      let data = await fetch("http://localhost:3500/applicant-profile",{
-        method:"POST",
-        headers:{
-          "content-type" : "application/json"
-        },
-        body:JSON.stringify(emailobj)
-      })
-      data = await data.json()
-      data = data.data
-      
-      // header
+    const scrollToHash = () => {
+    const hash = window.location.hash;
+
+    if (!hash) return;
+
+    const elementId = hash.substring(1);
+
+    setTimeout(() => {
+      const element = document.getElementById(elementId);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "instant",
+          block: "center",
+        });
+      }
+    },100);
+  }
+  scrollToHash()
+    const url = "http://localhost:3500/applicant-profile"
+    const getData = async () =>{
+    let response = await get(url);
+    
+    
+    let data = response.data
+    // header
       SetHeader({
         name:data.name,
         position:data.position,
@@ -63,13 +81,18 @@ function ApplicantProfile() {
 
       //experiences
       setExperiences(data.experiences)
-      
+
+      //education
+      setEducation(data.education)
+
+      //projects
+      setProjects(data.projects)
+
+      //certifications
+      setCertifications(data.certifications)
     }
-    catch(e){
-      message:"Something went wrong please try agin"
-    }
-  }
-  getData()
+    getData()
+    
   },[])
   
   return (
@@ -79,9 +102,9 @@ function ApplicantProfile() {
       <ProfessionalSummary summary={summary}/>
       <Skills skillsSet={skillsSet}/>
       <Experience experiences={experiences}/>
-      <Education/>
-      <Projects/>
-      <Certifications/>
+      <Education education={education}/>
+      <Projects projects={projects}/>
+      <Certifications certifications={certifications}/>
       <Resume/>
     </div>
   )

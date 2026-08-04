@@ -1,16 +1,16 @@
 import applicantProfileModel from "../../models/applicantProfile.js";
 
-const handleGetEditExperience = async (req, res) => {
+const handleGetEditProject = async (req, res) => {
   try {
     let id = req.params.id
     let email = req.user.email
     
     let profile = await applicantProfileModel.findOne({ email: email });
-    let experiences = profile.experiences;
+    let projects = profile.projects;
 
-    let experience = experiences.filter((exp)=>exp._id == id)
+    let project = projects.filter((exp)=>exp._id == id)
     return res.send({
-      data:experience[0]
+      data:project[0]
     });
   } catch (e) {
     console.log(e);
@@ -20,4 +20,4 @@ const handleGetEditExperience = async (req, res) => {
     });
   }
 };
-export default handleGetEditExperience;
+export default handleGetEditProject;

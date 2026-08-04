@@ -1,190 +1,229 @@
-.certificationsCard{
-    width:100%;
-    background:#ffffff;
-    border:1px solid #e2e8f0;
-    border-radius:12px;
-    padding:24px;
-    margin-bottom:10px;
+.certificationsCard {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
-.cardHeader{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+/* Header */
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
-.cardHeader h2{
-    margin:0;
-    font-size:20px;
-    font-weight:600;
-    color:#1e293b;
+.cardHeader h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #111827;
 }
 
-.addButton{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    padding:8px 14px;
-    border:1px solid #cbd5e1;
-    border-radius:7px;
-    background:#ffffff;
-    color:#2563eb;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.2s ease;
+/* Add Button */
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 9px 14px;
+
+  border-radius: 7px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  border: 1px solid #2563eb;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: all 0.2s ease;
 }
 
-.addButton:hover{
-    background:#eff6ff;
-    border-color:#2563eb;
+.addButton:hover {
+  background: #1d4ed8;
+
+  border-color: #1d4ed8;
 }
 
-.addButton svg{
-    font-size:16px;
+/* Certification List */
+
+.certificationsList {
+  display: flex;
+  flex-direction: column;
 }
 
-.certificationsList{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
+/* Certification Item */
+
+.certificationItem {
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.certificationItem{
-    padding-bottom:18px;
-    border-bottom:1px solid #e2e8f0;
+.certificationItem:first-child {
+  padding-top: 0;
 }
 
-.certificationItem:last-child{
-    border-bottom:none;
-    padding-bottom:0;
+.certificationItem:last-child {
+  border-bottom: none;
 }
 
-.certificationHeader{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+/* Certification Header */
+
+.certificationHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.certificationHeader h3{
-    margin:0;
-    font-size:17px;
-    font-weight:600;
-    color:#1e293b;
+.certificationHeader h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
 }
 
-.editButton{
-    width:32px;
-    height:32px;
-    padding:0;
-    border:none;
-    border-radius:6px;
-    background:transparent;
-    color:#64748b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:all 0.2s ease;
+/* Organization */
+
+.organization {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+  font-weight: 500;
 }
 
-.editButton:hover{
-    background:#f1f5f9;
-    color:#2563eb;
+/* Edit Button */
+
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
-.editButton svg{
-    font-size:16px;
+.editButton:hover {
+  color: #2563eb;
+  background: #eff6ff;
 }
 
-.organization{
-    margin:7px 0 4px;
-    font-size:15px;
-    font-weight:500;
-    color:#475569;
+.editButton svg {
+  font-size: 17px;
 }
 
-.issueDate{
-    margin:0 0 5px;
-    font-size:13px;
-    color:#64748b;
+/* Issue Date */
+
+.issueDate {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: #6b7280;
 }
 
-.credentialId{
-    margin:0 0 12px;
-    font-size:13px;
-    color:#64748b;
+/* Credential ID */
+
+.credentialId {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #6b7280;
 }
 
-.credentialLink{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    color:#2563eb;
-    font-size:14px;
-    font-weight:500;
-    text-decoration:none;
-    transition:color 0.2s ease;
+/* Credential Link */
+
+.credentialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.credentialLink:hover{
-    color:#1d4ed8;
+.credentialLink:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
 }
 
-.credentialLink svg{
-    font-size:15px;
+.credentialLink svg {
+  font-size: 15px;
 }
 
-.viewAllButton{
-    display:block;
-    margin:18px auto 0;
-    padding:8px 18px;
-    border:none;
-    background:transparent;
-    color:#2563eb;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.2s ease;
+/* Empty State */
+
+.emptyState {
+  padding: 30px 0;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
 }
 
-.viewAllButton:hover{
-    color:#1d4ed8;
-    text-decoration:underline;
+.emptyState p {
+  margin: 0;
 }
 
-@media(max-width:600px){
+/* View All Button */
 
-    .certificationsCard{
-        padding:20px;
-    }
-
-    .cardHeader h2{
-        font-size:18px;
-    }
-
-    .certificationHeader h3{
-        font-size:16px;
-    }
-
+.viewAllButton {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-@media(max-width:400px){
+.viewAllButton:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
 
-    .cardHeader{
-        align-items:flex-start;
-        gap:10px;
-    }
+/* Responsive */
 
-    .addButton{
-        padding:8px 10px;
-    }
+@media (max-width: 600px) {
+  .certificationsCard {
+    padding: 18px;
+  }
 
-    .addButton span{
-        display:none;
-    }
+  .cardHeader h2 {
+    font-size: 19px;
+  }
 
+  .addButton span {
+    display: none;
+  }
+
+  .addButton {
+    padding: 8px;
+  }
+
+  .certificationHeader h3 {
+    font-size: 16px;
+  }
 }

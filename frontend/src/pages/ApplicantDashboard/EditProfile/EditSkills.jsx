@@ -1,6 +1,7 @@
 import { useActionState, useState } from "react";
 import styles from "./editSkills.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import post from '../../../utils/post'
 
 function EditSkills() {
     const [alert, setAlert] = useState({
@@ -10,20 +11,12 @@ function EditSkills() {
     });
     const handleFormData = async (prevData, formData) => {
         const skill = formData.get("skill")
-        const email = sessionStorage.getItem("loggedInEmail")
         const headerDetails = {
             skill:skill,
-            email: email
         }
         try{
-            let response = await fetch("http://localhost:3500/add-skill", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(headerDetails)
-        })
-        response = await response.json()
+            let url = "http://localhost:3500/add-skill"
+            let response = await post(url,headerDetails)
         if(response.message){
             setAlert({
                 show:true,
@@ -112,7 +105,7 @@ function EditSkills() {
 
                 {/* Buttons */}
                 <div className={styles.buttonContainer}>
-                    <Link to='/applicant/profile'
+                    <Link to='/applicant/profile#skills'
                         type="button"
                         className={styles.saveButton}
                     >

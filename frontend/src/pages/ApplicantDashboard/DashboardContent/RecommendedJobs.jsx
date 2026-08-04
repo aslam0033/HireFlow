@@ -48,7 +48,7 @@ function RecommendedJobs() {
       {/* Jobs */}
       <div className={styles.jobsContainer}>
 
-        {jobs.map((job) => (
+        {jobs?.map((job) => (
 
           <div
             className={styles.jobCard}

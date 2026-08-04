@@ -1,14 +1,12 @@
-import { FiPlus, FiTrash2 } from "react-icons/fi";
+import React, { useActionState, useEffect, useState } from "react";
+import styles from "./editEducation.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import styles from "./editExperience.module.css";
-import { useActionState, useEffect, useState } from "react";
-import get from '../../../utils/get'
-import put from '../../../utils/put'
-import deleteRequest from '../../../utils/delete'
+import put from "../../../utils/put";
+import get from "../../../utils/get";
+import deleteRequest from "../../../utils/delete";
+import { FiTrash2 } from "react-icons/fi";
 
-function EditExperence() {
-  const[jtype,setJtype] = useState()
-  const [isWorking, setIsworking] = useState(false)
+const EditEducation = () => {
   const [alert, setAlert] = useState({
     show: false,
     message: "",
@@ -20,12 +18,10 @@ function EditExperence() {
   useEffect(() => {
     const getData = async () => {
       try {
-        let url = `http://localhost:3500/edit-experience/${id}`
+        let url = `http://localhost:3500/edit-education/${id}`
         let response = await get(url)
-
         if (response.data) {
           setDetails(response.data)
-          setIsworking(response.data.currentlyWorking)
         }
         else {
           setAlert({
@@ -45,9 +41,6 @@ function EditExperence() {
     }
     getData()
   }, [])
-  useEffect(()=>{
-    setJtype(details?.jobType)
-  },[details])
 
   const formatMonth = (date) => {
     if (!date) return "";
@@ -56,32 +49,17 @@ function EditExperence() {
 
 
   const handleFormData = async (prevData, formData) => {
-    if (formData.get("isWorking") == "on") {
-      setIsworking(true)
-    }
-    else {
-      setIsworking(false)
-    }
-    const position = formData.get("position")
-    const company = formData.get("company")
-    const location = formData.get("location")
-    const startDate = new Date(formData.get("startDate"))
-    const endDate = new Date(formData.get("endDate"))
-    const jobType = formData.get("jobType")
-    const description = formData.get("description")
-    const experienceDetails = {
-      position: position,
-      company: company,
-      location: location,
-      jobType: jobType,
-      startDate: startDate,
-      endDate: endDate,
-      isWorking: isWorking,
-      description: description,
-    }
     try {
-      let url = `http://localhost:3500/update-experience/${id}`
-      let response = await put(url,experienceDetails)
+      const educationDetails = {
+        degree: formData.get("degree"),
+        institution: formData.get("institution"),
+        fieldOfStudy: formData.get("fieldOfStudy"),
+        startDate: new Date(formData.get("startDate")),
+        endDate: new Date(formData.get("endDate")),
+        grade: formData.get("grade"),
+      }
+      let url = `http://localhost:3500/edit-education/${id}`
+      let response = await put(url, educationDetails)
       if (response.message) {
         setAlert({
           show: true,
@@ -94,10 +72,8 @@ function EditExperence() {
             message: "",
             type: ""
           })
-          navigate("/applicant/profile#experience")
+          navigate("/applicant/profile#education")
         }, 500);
-
-
       }
       else {
         setAlert({
@@ -119,7 +95,7 @@ function EditExperence() {
 
   const handleDelete = async () => {
     try {
-      let url = `http://localhost:3500/delete-Experience/${id}`
+      let url = `http://localhost:3500/delete-Education/${id}`
       let response = await deleteRequest(url)
       if (response.message) {
         setAlert({
@@ -133,7 +109,7 @@ function EditExperence() {
             message: "",
             type: ""
           })
-          navigate("/applicant/profile#experience")
+          navigate("/applicant/profile#education")
         }, 500);
       }
       else {
@@ -153,8 +129,8 @@ function EditExperence() {
     }
   }
   return (
-    <div className={styles.experienceOverlay}>
-      <div className={styles.experienceContainer}>
+    <div className={styles.educationOverlay}>
+      <div className={styles.educationContainer}>
         {alert.show && (
           <div className={`${styles.alert} ${styles[alert.type]}`}>
             <span>{alert.message}</span>
@@ -175,65 +151,78 @@ function EditExperence() {
           </div>
         )}
 
+        {/* Header */}
+
         <div className={styles.header}>
-          <h2>Edit Experience</h2>
+          <h2>Edit Education</h2>
+
+          <p>
+            Update your educational qualification and academic details.
+          </p>
         </div>
+
+
+        {/* Form */}
 
         <form className={styles.form} action={action}>
 
+          {/* Degree */}
+
           <div className={styles.formGroup}>
-            <label htmlFor="jobTitle">Job Title</label>
+            <label htmlFor="degree">
+              Degree / Qualification
+            </label>
+
             <input
               type="text"
-              id="jobTitle"
-              name="position"
-              defaultValue={details?.position}
-              placeholder="e.g. Frontend Developer"
+              id="degree"
+              name="degree"
+              defaultValue={details?.degree}
             />
           </div>
 
+
+          {/* Institution */}
+
           <div className={styles.formGroup}>
-            <label htmlFor="company">Company</label>
+            <label htmlFor="institution">
+              Institution
+            </label>
+
             <input
               type="text"
-              id="company"
-              name="company"
-              defaultValue={details?.company}
-              placeholder="e.g. Google"
+              id="institution"
+              name="institution"
+              defaultValue={details?.institution}
             />
           </div>
 
+
+          {/* Field of Study */}
+
           <div className={styles.formGroup}>
-            <label htmlFor="location">Location</label>
+            <label htmlFor="fieldOfStudy">
+              Field of Study
+            </label>
+
             <input
               type="text"
-              id="location"
-              name="location"
-              defaultValue={details?.location}
-              placeholder="e.g. Bengaluru, Karnataka"
+              id="fieldOfStudy"
+              name="fieldOfStudy"
+              defaultValue={details?.fieldOfStudy}
             />
           </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="jobType">job-type</label>
-            <select
-              type="text"
-              id="jobType"
-              name="jobType"
-              value={jtype}
-              onChange={(e)=>setJtype(e.target.value)}
-              placeholder="e.g.full-time"
-            >
-              <option value="partTime">Part time</option>
-              <option value="fullTime">Full time</option>
-              <option value="internship">Internship</option>
-              <option value="selfEmployed">Self employed</option>
-              <option value="freelancer">freelancer</option>
-            </select>
-          </div>
+
+
+          {/* Dates */}
 
           <div className={styles.dateRow}>
+
             <div className={styles.formGroup}>
-              <label htmlFor="startDate">Start Date</label>
+              <label htmlFor="startDate">
+                Start Date
+              </label>
+
               <input
                 type="month"
                 id="startDate"
@@ -242,41 +231,46 @@ function EditExperence() {
               />
             </div>
 
+
             <div className={styles.formGroup}>
-              <label htmlFor="endDate">End Date</label>
+              <label htmlFor="endDate">
+                End Date
+              </label>
+
               <input
                 type="month"
                 id="endDate"
-                defaultValue={formatMonth(details?.endDate)}
                 name="endDate"
+                defaultValue={formatMonth(details?.endDate)}
               />
             </div>
+
           </div>
 
-          <label className={styles.checkboxWrapper}>
-            <input
-              type="checkbox"
-              name="isWorking"
-              checked={isWorking}
-              onChange={() => setIsworking(!isWorking)}
-            />
-            <span>I am currently working in this role</span>
-          </label>
+
+          {/* Grade */}
 
           <div className={styles.formGroup}>
-            <label htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              name="description"
-              rows="5"
-              defaultValue={details?.description}
-              placeholder="Describe your responsibilities, achievements, and key contributions..."
-            ></textarea>
+            <label htmlFor="grade">
+              Grade / CGPA / Percentage
+            </label>
+
+            <input
+              type="text"
+              id="grade"
+              name="grade"
+              defaultValue={details?.grade}
+            />
           </div>
 
+
+          {/* Actions */}
+
           <div className={styles.actions}>
+
             <Link
-              to="/applicant/profile#experience"
+              to='/applicant/profile#education'
+              type="button"
               className={styles.cancelButton}
             >
               Cancel
@@ -286,17 +280,18 @@ function EditExperence() {
               type="submit"
               className={styles.saveButton}
             >
-              Update
+              Update Education
             </button>
+
           </div>
 
         </form>
         <div className={styles.deleteSection}>
           <div className={styles.deleteContent}>
-            <h3>Delete Experience</h3>
+            <h3>Delete Education</h3>
 
             <p>
-              Permanently remove this experience from your profile. This
+              Permanently remove this education from your profile. This
               action cannot be undone.
             </p>
           </div>
@@ -304,13 +299,12 @@ function EditExperence() {
           <button onClick={() => handleDelete()}
             type="button" className={styles.deleteButton}>
             <FiTrash2 />
-            <span>Delete experience</span>
+            <span>Delete education</span>
           </button>
         </div>
-
       </div>
     </div>
   );
-}
+};
 
-export default EditExperence;
+export default EditEducation;

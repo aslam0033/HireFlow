@@ -76,7 +76,7 @@ const applicantProfileSchema = mongoose.Schema({
             type: String,
             trim: true
         },
-        technologies: [{
+        skills: [{
             type: String,
             trim: true
         }],
@@ -84,10 +84,12 @@ const applicantProfileSchema = mongoose.Schema({
             type: String,
             trim: true
         },
-        githubUrl: {
-            type: String,
-            trim: true
-        }
+        startDate: {
+            type: Date
+        },
+        endDate: {
+            type: Date
+        },
     }],
     education: [{
     degree: {
@@ -125,9 +127,13 @@ const applicantProfileSchema = mongoose.Schema({
         issueDate: {
             type: Date
         },
-        credentialUrl: {
+        certificateId: {
             type: String,
             trim: true
+        },
+        certificateUrl:{
+            type:String,
+            trim:true
         }
     }],
     resume: {

@@ -1,34 +1,57 @@
 import { useActionState, useState } from "react";
 import styles from "./editProfileHeader.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import get from '../../../utils/get'
+import post from '../../../utils/post'
 
 function EditProfileHeader() {
+    const[header,setHeader] = useState({
+        name:"",
+        position:"",
+        location:""
+    })
     const navigate = useNavigate()
     const [alert, setAlert] = useState({
         show: false,
         message: "",
         type: "", // success or error
     });
+    useEffect(() => {
+    try {
+      const url = "http://localhost:3500/applicant-profile"
+      const getData = async () => {
+        let response = await get(url);
+        let data = response.data
+        setHeader({
+          name:data.name,
+          position:data.position,
+          location:data.location
+        })
+      }
+      getData()
+    }
+    catch (e) {
+      setAlert({
+        show:true,
+        type:"error",
+        message:"can't load data"
+      })
+    }
+    
+  },[])
     const handleFormData = async (prevData, formData) => {
         const fullname = formData.get("name")
         const position = formData.get("position")
         const location = formData.get("location")
-        const email = sessionStorage.getItem("loggedInEmail")
         const headerDetails = {
             name: fullname,
             position: position,
             location: location,
-            email: email
         }
         try{
-            let response = await fetch("http://localhost:3500/edit-header", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(headerDetails)
-        })
-        response = await response.json()
+            let url = "http://localhost:3500/edit-header"
+            let response = await post(url,headerDetails)
         if(response.message){
             setAlert({
                 show:true,
@@ -38,7 +61,7 @@ function EditProfileHeader() {
 
             setTimeout(() => {
                 navigate("/applicant/profile")
-            }, 2000);
+            }, 500);
         }
         else{
             setAlert({
@@ -46,6 +69,13 @@ function EditProfileHeader() {
                 message:response.error,
                 type:"error"
             })
+            setTimeout(() => {
+                setAlert({
+                    show:false,
+                    message:"",
+                    type:""
+                })
+            }, 1500);
         }
         }
         catch(e){
@@ -120,6 +150,7 @@ function EditProfileHeader() {
                             id="name"
                             type="text"
                             name="name"
+                            defaultValue={header?.name}
                             placeholder="Enter your name"
                         />
                     </div>
@@ -133,6 +164,7 @@ function EditProfileHeader() {
                             id="position"
                             type="text"
                             name="position"
+                            defaultValue={header?.position}
                             placeholder="e.g. Frontend Developer"
                         />
                     </div>
@@ -146,6 +178,7 @@ function EditProfileHeader() {
                             id="location"
                             type="text"
                             name="location"
+                            defaultValue={header?.location}
                             placeholder="e.g. Bangalore, India"
                         />
                     </div>

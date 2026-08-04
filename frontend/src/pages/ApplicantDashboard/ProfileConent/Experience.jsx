@@ -12,18 +12,18 @@ function Experience({ experiences }) {
   const [experiencesList, setExperiencesList] = useState(
     experiences || []
   );
-  const [showall, setShowall] = useState(false);
+  
 
   useEffect(() => {
     setExperiencesList(experiences || []);
   }, [experiences]);
-
+  const [showall, setShowall] = useState(false);
   const displayExperiences = showall
-    ? experiencesList
-    : experiencesList.slice(0, 2);
+    ? experiencesList.sort((a, b) => a.position.localeCompare(b.position))
+    : experiencesList.sort((a, b) => a.position.localeCompare(b.position)).slice(0, 2);
 
   return (
-    <div className={styles.experienceCard}>
+    <div className={styles.experienceCard} id="experience">
       <div className={styles.cardHeader}>
         <h2>Experience</h2>
 

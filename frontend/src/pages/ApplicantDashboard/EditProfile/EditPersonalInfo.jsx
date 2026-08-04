@@ -1,31 +1,54 @@
 import { useActionState, useState } from "react";
 import styles from "./editPersonalInfo.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import get from '../../../utils/get'
+import post from '../../../utils/post'
 
 function EditPersonalInfo() {
+  const[info,setInfo] = useState({
+    contactEmail:"",
+    phone:"",
+    location:""
+  })
   const [alert, setAlert] = useState({
     show: false,
     type: "",
     message: ""
   })
+  useEffect(() => {
+    try {
+      const url = "http://localhost:3500/applicant-profile"
+      const getData = async () => {
+        let response = await get(url);
+        let data = response.data
+        setInfo({
+          contactEmail:data.contactEmail,
+          phone:data.phone,
+          location:data.location
+        })
+      }
+      getData()
+    }
+    catch (e) {
+      setAlert({
+        show:true,
+        type:"error",
+        message:"can't load data"
+      })
+    }
+    
+  },[])
   const navigate = useNavigate()
   const handleform = async (prevData, formData) => {
-    const email = sessionStorage.getItem("loggedInEmail")
     const personalInfo = {
-      loginEmail: email,
       email: formData.get('email'),
       phone: formData.get('phone'),
       location: formData.get('location')
     }
     try {
-      let response = await fetch("http://localhost:3500/edit-personalInfo", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify(personalInfo)
-      })
-      response = await response.json()
+      let url = "http://localhost:3500/edit-personalInfo"
+      let response = await post(url,personalInfo)
       if (response.message) {
         setAlert({
           show: true,
@@ -34,7 +57,7 @@ function EditPersonalInfo() {
         })
         setTimeout(() => {
           navigate("/applicant/profile")
-        }, 1500);
+        }, 500);
       }
       else {
         setAlert({
@@ -96,6 +119,7 @@ function EditPersonalInfo() {
               type="email"
               id="email"
               name="email"
+              defaultValue={info?.contactEmail}
               placeholder="Enter your email address"
             />
           </div>
@@ -108,6 +132,7 @@ function EditPersonalInfo() {
               type="tel"
               id="phone"
               name="phone"
+              defaultValue={info?.phone}
               placeholder="Enter your phone number"
             />
           </div>
@@ -120,6 +145,7 @@ function EditPersonalInfo() {
               type="text"
               id="location"
               name="location"
+              defaultValue={info?.location}
               placeholder="Enter your location"
             />
           </div>

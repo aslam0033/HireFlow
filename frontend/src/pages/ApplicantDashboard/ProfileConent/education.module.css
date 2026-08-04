@@ -175,3 +175,403 @@
     }
 
 }
+/* Main Education Card */
+
+.educationCard {
+  width: 100%;
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+
+/* Card Header */
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cardHeader h2 {
+  margin: 0;
+
+  color: #1f2937;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+/* Add Education Button */
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 9px 14px;
+
+  border-radius: 7px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  border: 1px solid #2563eb;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background: #1d4ed8;
+
+  border-color: #1d4ed8;
+}
+
+
+/* Education List */
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+/* Education Item */
+
+.educationItem {
+  display: flex;
+
+  gap: 16px;
+
+  padding: 18px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  transition: all 0.2s ease;
+}
+
+.educationItem:hover {
+  border-color: #d1d5db;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Education Icon */
+
+.educationIcon {
+  width: 44px;
+  height: 44px;
+
+  min-width: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-size: 21px;
+}
+
+
+/* Education Content */
+
+.educationContent {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+/* Title Row */
+
+.titleRow {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.titleRow h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+
+/* Institution */
+
+.institution {
+  margin: 5px 0 0;
+
+  color: #4b5563;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+
+/* Field of Study */
+
+.fieldOfStudy {
+  margin: 8px 0 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* Education Details */
+
+.educationDetails {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 18px;
+
+  margin-top: 12px;
+}
+
+
+/* Duration */
+
+.duration {
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+/* Grade */
+
+.grade {
+  color: #374151;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  padding: 4px 9px;
+
+  background: #f3f4f6;
+
+  border-radius: 5px;
+}
+
+
+/* Edit Button */
+
+.editButton {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #4b5563;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.editButton:hover {
+  background: #f3f4f6;
+
+  color: #2563eb;
+
+  border-color: #bfdbfe;
+}
+
+
+/* View All Button */
+
+.viewAllButton {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 11px 16px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #2563eb;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.viewAllButton:hover {
+  background: #eff6ff;
+
+  border-color: #bfdbfe;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 600px) {
+
+  .educationCard {
+    padding: 18px;
+  }
+
+
+  .cardHeader {
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+
+  .cardHeader h2 {
+    font-size: 18px;
+  }
+
+
+  .addButton span {
+    display: none;
+  }
+
+
+  .addButton {
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    border-radius: 7px;
+  }
+
+
+  .educationItem {
+    padding: 15px;
+
+    gap: 12px;
+  }
+
+
+  .educationIcon {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    font-size: 18px;
+  }
+
+
+  .titleRow h3 {
+    font-size: 15px;
+  }
+
+
+  .institution {
+    font-size: 13px;
+  }
+
+
+  .fieldOfStudy {
+    font-size: 13px;
+  }
+
+
+  .educationDetails {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+}
+
+
+/* Very Small Screens */
+
+@media (max-width: 400px) {
+
+  .educationCard {
+    padding: 15px;
+  }
+
+
+  .educationItem {
+    flex-direction: column;
+  }
+
+
+  .educationIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .titleRow {
+    gap: 10px;
+  }
+
+}

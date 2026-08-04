@@ -2,12 +2,13 @@ import applicantProfileModel from "../../models/applicantProfile.js"
 
 const handleAddSkill = async (req,res) => {
     try{
-        const {email,skill} = req.body
-        let skills = await applicantProfileModel.findOne({email:email})
+        const email = req.user.email
+        const {skill} = req.body
+        let profile = await applicantProfileModel.findOne({email:email})
         
-        skills = skills.skills
+        let skills = profile.skills
         skills.push(skill)
-         await applicantProfileModel.findOneAndUpdate({email:email},{skills:skills})
+        await profile.save()
     return res.send({
         message:"skill added successfully"
     })

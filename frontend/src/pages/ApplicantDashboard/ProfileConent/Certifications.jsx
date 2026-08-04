@@ -3,64 +3,93 @@ import {
   FiEdit2,
   FiExternalLink,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import styles from "./certifications.module.css";
 import { useState } from "react";
 
-function Certifications() {
-  const [certifications, Setcertifications] = useState([])
-  
-
+function Certifications({ certifications }) {
+  const [showall, setShowall] = useState(false);
+    const displayCertifications = showall
+      ? certifications.sort((a, b) => a.name.localeCompare(b.position))
+      : certifications.sort((a, b) => a.name.localeCompare(b.position)).slice(0, 2);
   return (
-    <div className={styles.certificationsCard}>
+    <div className={styles.certificationsCard} id="certifications">
       <div className={styles.cardHeader}>
         <h2>Certifications</h2>
 
-        <button className={styles.addButton}>
+        <Link
+        to='/applicant/add-certification'
+         className={styles.addButton}>
           <FiPlus />
           <span>Add Certification</span>
-        </button>
+        </Link>
       </div>
 
       <div className={styles.certificationsList}>
-        {certifications.map((certification) => (
-          <div
-            className={styles.certificationItem}
-            key={certification.id}
-          >
-            <div className={styles.certificationHeader}>
-              <h3>{certification.name}</h3>
-
-              <button className={styles.editButton}>
-                <FiEdit2 />
-              </button>
-            </div>
-
-            <p className={styles.organization}>
-              {certification.organization}
-            </p>
-
-            <p className={styles.issueDate}>
-              {certification.issueDate}
-            </p>
-
-            <p className={styles.credentialId}>
-              Credential ID: {certification.credentialId}
-            </p>
-
-            <a
-              href={certification.credentialLink}
-              className={styles.credentialLink}
+        {displayCertifications.length > 0 ? (
+          displayCertifications.map((certification) => (
+            <div
+              className={styles.certificationItem}
+              key={certification._id}
             >
-              <FiExternalLink />
-              <span>View Credential</span>
-            </a>
+              <div className={styles.certificationHeader}>
+                <div>
+                  <h3>{certification.name}</h3>
+
+                  <p className={styles.organization}>
+                    {certification.issuingOrganization}
+                  </p>
+                </div>
+
+                <Link
+                to={`/applicant/edit-certification/${certification._id}`}
+                 className={styles.editButton}>
+                  <FiEdit2 />
+                </Link>
+              </div>
+
+              <p className={styles.issueDate}>
+                Issued on{" "}
+                {new Date(certification.issueDate).toLocaleDateString(
+                  "en-US",
+                  {
+                    month: "long",
+                    year: "numeric",
+                  }
+                )}
+              </p>
+
+              {certification.certificateId && (
+                <p className={styles.credentialId}>
+                  certificateId ID: {certification.certificateId}
+                </p>
+              )}
+
+              {certification.certificateUrl && (
+                <a
+                  href={certification.certificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.credentialLink}
+                >
+                  <FiExternalLink />
+                  <span>View Credential</span>
+                </a>
+              )}
+            </div>
+          ))
+        ) : (
+          <div className={styles.emptyState}>
+            <p>No certifications added yet.</p>
           </div>
-        ))}
+        )}
       </div>
 
       {certifications.length > 2 && (
-        <button className={styles.viewAllButton}>
-          View All Certifications
+        <button
+        onClick={()=>setShowall(!showall)}
+         className={styles.viewAllButton}>
+          {showall?"view less":"view more"}
         </button>
       )}
     </div>

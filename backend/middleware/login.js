@@ -1,18 +1,20 @@
-const isLoggedIn = (req,res,next)=>{
-    const token = req.cookies.token
-    if(!token){
-        return res.send({
-            error:"You are not logged in Please log in"
-        })
+import jsonwebtoken from 'jsonwebtoken'
+const isLoggedIn = (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) {
+      return res.send({
+        error: "You are not logged in Please log in",
+      });
     }
-    if(jwt.verify(token, process.env.JWT_SECRET)){
-        return next();
-    }
-    else{
-        return res.send({
-            error:"internal server error"
-        })
-    }
-}
+    const decoded = jsonwebtoken.verify(token, process.env.SECRETKEY);
+    req.user = decoded;
+    next();
+  } catch (e) {
+    return res.send({
+      error: "internal server error",
+    });
+  }
+};
 
-export default isLoggedIn
+export default isLoggedIn;

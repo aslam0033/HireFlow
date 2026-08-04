@@ -2,7 +2,8 @@ import applicantProfileModel from "../../models/applicantProfile.js"
 
 const handleHeader = async (req,res) => {
     try{
-        const {email,name,position,location} = req.body
+        const email = req.user.email
+        const {name,position,location} = req.body
         
     await applicantProfileModel.findOneAndUpdate({email:email},{name:name,position:position,location:location})
     return res.send({

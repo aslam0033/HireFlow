@@ -21,12 +21,30 @@ import handleAddSkill from './controllers/applicantProfile/handleAddSkill.js';
 import handleRemoveSkill from './controllers/applicantProfile/handleRemoveSkill.js';
 import handleAddExperience from './controllers/applicantProfile/handleAddExperience.js';
 import handleGetEditExperience from './controllers/applicantProfile/handleGetEditExperience.js';
+import handleUpdateExperience from './controllers/applicantProfile/handleUpdateExperience';
+import handleDeleteExperience from './controllers/applicantProfile/handleDeleteExperience.js';
+import isLoggedIn from './middleware/login.js';
+import handleAddEducation from './controllers/applicantProfile/handleAddEducation.js';
+import handleGetEditEducation from './controllers/applicantProfile/handleGetEditEducation.js';
+import handleUpdatedEducation from './controllers/applicantProfile/handleUpdatedEducation.js';
+import handleDeleteEducation from './controllers/applicantProfile/handleDeleteEducation.js';
+import handleAddProject from './controllers/applicantProfile/handleAddProject.js';
+import handleGetEditProject from './controllers/applicantProfile/handleGetEditProject.js';
+import handleUpdateProject from './controllers/applicantProfile/handleUpdateProject.js';
+import handleDeleteProject from './controllers/applicantProfile/handleDeleteProject.js';
+import handleAddCertification from './controllers/applicantProfile/handleAddCertification.js';
+import handleGetEditCertification from './controllers/applicantProfile/handleGetEditCertification.js';
+import handleUpdateCertification from './controllers/applicantProfile/handleUpdateCertification.js';
+import handleDeleteCertificate from './controllers/applicantProfile/handleDeleteCertificate.js';
 
 const app = express()
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}))
 
 dbConnect();
 app.post("/register",handleRegister)
@@ -38,12 +56,34 @@ app.post("/reset-password",isOtpVerified,handleResetPassword)
 app.get("/appliedJobs",handleAppliedJobs)
 app.get("/stats",handleStats)
 app.get("/recommendedJobs",handleRecommendedJobs)
-app.post("/applicant-profile",handleProfile)
-app.post("/edit-header",handleHeader)
-app.post("/edit-personalInfo",handlePersonalInfo)
-app.post("/edit-professionalSummary",handleSummary)
-app.post("/add-skill",handleAddSkill)
-app.delete("/delete-skill",handleRemoveSkill)
-app.post("/add-experience",handleAddExperience)
-app.post("/edit-experience/:id",handleGetEditExperience)
+app.get("/applicant-profile",isLoggedIn,handleProfile)
+app.post("/edit-header",isLoggedIn,handleHeader)
+app.post("/edit-personalInfo",isLoggedIn,handlePersonalInfo)
+app.post("/edit-professionalSummary",isLoggedIn,handleSummary)
+app.post("/add-skill",isLoggedIn,handleAddSkill)
+app.delete("/delete-skill/:skill",isLoggedIn,handleRemoveSkill)
+// experience
+app.get("/edit-experience/:id",isLoggedIn,handleGetEditExperience)
+app.post("/add-experience",isLoggedIn,handleAddExperience)
+app.put("/update-experience/:id",isLoggedIn,handleUpdateExperience)
+app.delete("/delete-experience/:id",isLoggedIn,handleDeleteExperience)
+
+//education
+app.get("/edit-education/:id",isLoggedIn,handleGetEditEducation)
+app.post("/add-education",isLoggedIn,handleAddEducation)
+app.put("/edit-education/:id",isLoggedIn,handleUpdatedEducation)
+app.delete("/delete-education/:id",isLoggedIn,handleDeleteEducation)
+
+//projects
+app.get("/edit-project/:id",isLoggedIn,handleGetEditProject)
+app.post("/add-project",isLoggedIn,handleAddProject)
+app.put("/edit-project/:id",isLoggedIn,handleUpdateProject)
+app.delete("/delete-project/:id",isLoggedIn,handleDeleteProject)
+
+//certifications
+app.get("/edit-certification/:id",isLoggedIn,handleGetEditCertification)
+app.post("/add-certification",isLoggedIn,handleAddCertification)
+app.put("/edit-certification/:id",isLoggedIn,handleUpdateCertification)
+app.delete("/delete-certificate/:id",isLoggedIn,handleDeleteCertificate)
+
 app.listen(process.env.PORT,()=>{console.log("Server Has been started");})

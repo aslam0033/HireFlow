@@ -39,6 +39,7 @@ function Login() {
       headers:{
         "content-type":"application/json"
       },
+      credentials:"include",
       body:JSON.stringify(user)
     })
     response = await response.json();
@@ -53,7 +54,7 @@ function Login() {
         if(response.role == "applicant"){
           setTimeout(() => {
           navigate("/applicant");
-        }, 2000);
+        }, 1000);
         }
         else{
           setTimeout(() => {
