@@ -2,17 +2,19 @@ import { Link } from "react-router-dom";
 import styles from "./recentApplications.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import get from "../../../utils/get";
 
 function RecentApplications() {
   const [applications, setApplications] = useState([])
-  useEffect(() => {
-    const getData = async () => {
-      let data = await fetch("http://localhost:3500/appliedJobs")
-      data = await data.json()
-      setApplications(data.data)
-    }
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     let profile = await get("http://localhost:3500/appliedJobs")
+  //     setApplications(profile.appliedJobs)
+  //     // console.log(profile?.appliedJobs[0]?.job.title);
+      
+  //   }
+  //   getData()
+  // }, [])
   return (
     <section className={styles.card}>
 
@@ -51,7 +53,7 @@ function RecentApplications() {
 
             {applications?.map((application) => (
 
-              <tr key={application._id}>
+              <tr key={application.id}>
 
                 <td className={styles.position}>
                   {application.title}

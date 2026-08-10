@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./findJobs.module.css";
 import {
   FiSearch,
@@ -7,6 +7,8 @@ import {
   FiClock,
   FiDollarSign,
 } from "react-icons/fi";
+
+
 
 const jobsData = [
   {
@@ -55,30 +57,17 @@ const jobsData = [
   },
 ];
 
+
 function FindJobs() {
-  const [search, setSearch] = useState("");
-  const [location, setLocation] = useState("");
-  const [jobType, setJobType] = useState("All");
-  const [workMode, setWorkMode] = useState("All");
-
-  const filteredJobs = jobsData.filter((job) => {
-    const searchMatch =
-      job.title.toLowerCase().includes(search.toLowerCase()) ||
-      job.company.toLowerCase().includes(search.toLowerCase()) ||
-      job.skills.some((skill) =>
-        skill.toLowerCase().includes(search.toLowerCase())
-      );
-
-    const locationMatch = job.location
-      .toLowerCase()
-      .includes(location.toLowerCase());
-
-    const typeMatch = jobType === "All" || job.type === jobType;
-
-    const modeMatch = workMode === "All" || job.mode === workMode;
-
-    return searchMatch && locationMatch && typeMatch && modeMatch;
-  });
+  const [displayedJobs,setDisplayedJobs] = useState([])
+  const [jobtype,setJobtype] = useState([])
+  useEffect(()=>{
+  setDisplayedJobs(jobsData)
+},[])
+useEffect(()=>{
+  console.log(jobtype);
+  
+},[jobtype])
 
   return (
     <div className={styles.page}>
@@ -125,7 +114,7 @@ function FindJobs() {
       <div className={styles.filters}>
         <select
           value={jobType}
-          onChange={(e) => setJobType(e.target.value)}
+          onChange={(e) => setJobtype(e.target.value)}
         >
           <option value="All">All Job Types</option>
           <option value="Full-time">Full-time</option>

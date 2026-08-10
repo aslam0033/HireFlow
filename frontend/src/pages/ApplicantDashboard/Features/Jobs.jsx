@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./findJobs.module.css";
 
-const FindJobs = () => {
+const Jobs = () => {
+  const [displayJobs,setDisplayJobs] = useState([])
+  const[jobtype,setjobtype] = useState([])
   const jobs = [
     {
       id: 1,
@@ -48,6 +50,15 @@ const FindJobs = () => {
       skills: ["JavaScript", "React", "Git"],
     },
   ];
+
+  const handleJobTypes = (e) => {
+    if(e.target.checked){
+      setjobtype([...jobtype,e.target.value])
+    }
+    else{
+      setjobtype(jobtype.filter((j)=> j!=e.target.value))
+    }
+  }
 
   return (
     <div className={styles.findJobsPage}>
@@ -111,22 +122,22 @@ const FindJobs = () => {
             <h3>Job Type</h3>
 
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value='full-time'  onClick={(e)=>handleJobTypes(e)}/>
               Full Time
             </label>
 
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value='part-time' onClick={(e)=>handleJobTypes(e)}/>
               Part Time
             </label>
 
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value='internship' onClick={(e)=>handleJobTypes(e)}/>
               Internship
             </label>
 
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value='contract' onClick={(e)=>handleJobTypes(e)}/>
               Contract
             </label>
           </div>
@@ -225,7 +236,7 @@ const FindJobs = () => {
           {/* Job Cards */}
           <div className={styles.jobsList}>
 
-            {jobs.map((job) => (
+            {displayJobs.map((job) => (
 
               <div className={styles.jobCard} key={job.id}>
 
@@ -305,4 +316,4 @@ const FindJobs = () => {
   );
 };
 
-export default FindJobs;
+export default Jobs;

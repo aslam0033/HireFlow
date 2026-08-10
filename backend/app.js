@@ -10,7 +10,6 @@ import handleResetotp from './controllers/handleResetotp.js';
 import handleForgetPassword from './controllers/handleForgetPassword.js';
 import handleResetPassword from './controllers/handleResetPassword.js';
 import isOtpVerified from './middleware/resetPass.js';
-import handleAppliedJobs from './controllers/handleAppliedJobs.js';
 import handleStats from './controllers/handleStats.js';
 import handleRecommendedJobs from './controllers/handleRecommendedJobs.js';
 import handleHeader from './controllers/applicantProfile/handleHeader.js';
@@ -36,6 +35,7 @@ import handleAddCertification from './controllers/applicantProfile/handleAddCert
 import handleGetEditCertification from './controllers/applicantProfile/handleGetEditCertification.js';
 import handleUpdateCertification from './controllers/applicantProfile/handleUpdateCertification.js';
 import handleDeleteCertificate from './controllers/applicantProfile/handleDeleteCertificate.js';
+import handleAppliedJobs from './controllers/applicantProfile/handleappliedjobs.js'
 
 const app = express()
 
@@ -53,10 +53,10 @@ app.post("/login",handleLogin)
 app.post("/getEmail",handleForgetPassword)
 app.post("/verify-otp",handleResetotp)
 app.post("/reset-password",isOtpVerified,handleResetPassword)
-app.get("/appliedJobs",handleAppliedJobs)
 app.get("/stats",handleStats)
 app.get("/recommendedJobs",handleRecommendedJobs)
 app.get("/applicant-profile",isLoggedIn,handleProfile)
+app.get("/appliedJobs",isLoggedIn,handleAppliedJobs)
 app.post("/edit-header",isLoggedIn,handleHeader)
 app.post("/edit-personalInfo",isLoggedIn,handlePersonalInfo)
 app.post("/edit-professionalSummary",isLoggedIn,handleSummary)

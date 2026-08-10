@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import styles from "./profileCompletion.module.css";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 
-function ProfileCompletion() {
-  const completionPercentage = 80;
+function ProfileCompletion({percentage}) {
 
   return (
     <section className={styles.card}>
@@ -22,7 +22,7 @@ function ProfileCompletion() {
         </div>
 
         <div className={styles.percentage}>
-          {completionPercentage}%
+          {percentage}%
         </div>
 
       </div>
@@ -34,7 +34,7 @@ function ProfileCompletion() {
         <div
           className={styles.progressBar}
           style={{
-            width: `${completionPercentage}%`,
+            width: `${percentage}%`,
           }}
         ></div>
 
@@ -52,12 +52,14 @@ function ProfileCompletion() {
           </span>
         </div>
 
-        <button className={styles.completeButton}>
+        <Link
+        to='/applicant/profile'
+         className={styles.completeButton}>
           Complete Profile
 
           <FiArrowRight />
 
-        </button>
+        </Link>
 
       </div>
 

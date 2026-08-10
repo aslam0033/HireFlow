@@ -1,0 +1,84 @@
+import mongoose from "mongoose";
+
+const companySchema = mongoose.Schema({
+    name:{
+        type:String,
+        trim:true
+    },
+    logo:{
+        type:String,
+        trim:true
+    },
+    coverImage:{
+        type:String,
+        trim:true
+    },
+    description:{
+        type:String,
+        trim:true
+    },
+    website:{
+        type:String,
+        trim:true
+    },
+    industry:{
+        type:String,
+        trim:true
+    },
+    companyType:{
+        type:String,
+        trim:true
+    },
+    location:{
+        type:String,
+        trim:true
+    },
+    createdBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    },
+    numberOfEmployees:{
+        type:Number
+    },
+    foundedYear:{
+        type:Number
+    },
+    verificationStatus:{
+        type:Boolean,
+        default:false
+    },
+    branches:[{
+        name:{
+            type:String,
+            trim:true
+        },
+        location:{
+            type:String,
+            trim:true
+        }
+    }],
+    headQuarter:{
+        name:{
+            type:String,
+            trim:true
+        },
+        location:{
+            type:String,
+            trim:true
+        }
+    },
+    socialLinks:[{
+        name:{
+            type:String,
+            trim:true
+        },
+        url:{
+            type:String,
+            trim:true
+        }
+    }],
+},{timestamps:true})
+
+const companyModel = mongoose.model("Company",companySchema)
+
+export default companyModel

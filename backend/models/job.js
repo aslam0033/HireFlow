@@ -1,75 +1,63 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const jobSchema = mongoose.Schema({
+    company:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Company",
+        required:true,
+    },
+    postedBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true,
+    },
     title:{
         type:String,
-        required:true,
-        trim:true
-    },
-    company:{
-        type:String,
-        required:true,
-        trim:true
-    },
-    location:{
-        type:String,
-        required:true,
-        trim:true
-    },
-    jobType:{
-        type:String,
-        enum:["full-time","part-time","Internship","Contract"],
-        required:true,
-        trim:true
-    },
-    workMode:{
-        type:String,
-        enum:["Remote","On-site","Hybrid"],
-        required:true,
-        trim:true
-    },
-    salary:{
-        type:String,
-        required:true
-    },
-    experience:{
-        type:String,
+        trim:true,
         required:true
     },
     description:{
         type:String,
+        trim:true,
         required:true
+    },
+    employmentType:{
+        type:String,
+        enum:["full-time","part-time","internship","contract"],
+        trim:true
+    },
+    workMode:{
+        type:String,
+        enum:["remote","on-site","hybrid"],
+        trim:true
+    },
+    location:{
+        type:String,
+        trim:true
+    },
+    experienceRequired:{
+        type:String,
+        trim:true
     },
     skills:[{
         type:String,
-        required:true,
+        trim:true
     }],
-    responsibilities:[{
+    salaryRange:{
         type:String,
-        required:true,
-    }],
-    requirements:[{
-        type:String,
-        required:true,
-    }],
+        trim:true
+    },
     applicationDeadline:{
-        type:Date,
-        required:true,
+        type:Date
     },
     status:{
         type:String,
-        required:true,
-        enum:["open","closed","draft"],
+        enum:["open","draft","closed"],
+        trim:true,
         default:"open"
-    },
-    createdBy:{
-        type:String,
-        // type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:"user"
-    },
+    }
 },{timestamps:true})
 
-const jobModel = mongoose.model('jobs',jobSchema)
+const jobModel = mongoose.model("Job",jobSchema)
 
 export default jobModel

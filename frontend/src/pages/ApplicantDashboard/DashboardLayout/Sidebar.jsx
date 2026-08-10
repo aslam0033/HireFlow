@@ -40,7 +40,7 @@ function Sidebar() {
           }
         >
           <span className={styles.icon}>⌕</span>
-          <span>Find Jobs</span>
+          <span>Jobs</span>
         </NavLink>
 
         <NavLink

@@ -5,7 +5,6 @@ import styles from "./applicant.module.css";
 import { Routes, Route } from 'react-router-dom'
 import ApplicantDashboard from "./Features/ApplicantDashboard";
 import ApplicantProfile from "./Features/ApplicantProfile";
-import FindJobs from "./Features/FindJobs";
 import MyApplications from "./Features/MyApplications";
 import SavedJobs from "./Features/SavedJobs";
 import EditProfileHeader from "./EditProfile/EditProfileHeader";
@@ -20,6 +19,7 @@ import AddProject from "./EditProfile/AddProject";
 import EditProject from "./EditProfile/EditProject";
 import AddCertification from "./EditProfile/AddCertification";
 import EditCertification from "./EditProfile/EditCertification";
+import Jobs from "./Features/Jobs";
 
 function Applicant() {
   return (
@@ -42,7 +42,7 @@ function Applicant() {
             <Routes>
                 <Route path="/dashboard?" element={<ApplicantDashboard/>}/>
                 <Route path="/profile" element={<ApplicantProfile/>}/>
-                <Route path="/jobs" element={<FindJobs/>}/>
+                <Route path="/jobs" element={<Jobs/>}/>
                 <Route path="/applications" element={<MyApplications/>}/>
                 <Route path="/saved-jobs" element={<SavedJobs/>}/>
 

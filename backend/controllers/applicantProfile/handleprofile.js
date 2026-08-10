@@ -1,4 +1,3 @@
-import jsonwebtoken from 'jsonwebtoken'
 import applicantProfileModel from "../../models/applicantProfile.js"
 
 const handleProfile = async (req,res) => {

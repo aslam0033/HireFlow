@@ -1,14 +1,17 @@
+import { useEffect, useState } from "react";
 import styles from "./welcomeSection.module.css";
 import { FiSearch } from "react-icons/fi"; 
 import { Link } from "react-router-dom";
 
-function WelcomeSection() {
+
+function WelcomeSection({name}) {
+  
   return (
     <section className={styles.welcomeSection}>
 
       <div className={styles.content}>
         <h1 className={styles.heading}>
-          Welcome back, Aslam 👋
+          Welcome, {name}👋
         </h1>
 
         <p className={styles.description}>
