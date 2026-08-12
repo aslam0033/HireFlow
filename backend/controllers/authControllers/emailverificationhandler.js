@@ -1,14 +1,18 @@
-import applicantProfileModel from "../models/applicantProfile.js"
-import pendingUserModel from "../models/pendinguser.js"
-import userModel from "../models/user.js"
+import pendingUserModel from "../../models/pendingUser.js"
+import userModel from "../../models/user.js"
+import jsonwebtoken from "jsonwebtoken";
+import bcrypt, { hash } from "bcrypt";
 
-const handleVerification = async (req, res) => {
+const emailverificationhandler = async (req, res) => {
     //get data from the request
-    const { otp, email } = req.body
+    const emailver = req.cookies.emailver;
+    const { otp} = req.body
+
 
     try {
+        const userData = jsonwebtoken.verify(emailver, process.env.SECRETKEY);
         //find the user
-        const user = await pendingUserModel.findOne({ email: email })
+        const user = await pendingUserModel.findOne({ email: userData.email })
 
         //validations
         if (!user) {
@@ -16,34 +20,21 @@ const handleVerification = async (req, res) => {
                 error: "User not found! Register and try again"
             })
         }
-        if (otp != user.otp) {
-            return res.send({
-                error: "wrong otp"
-            })
-        }
         if (Date.now() > user.otpExpiry) {
             return res.send({
                 error: "otp is expired! Please request another otp"
             })
         }
-
-        // add the user to database
+        const isMatch = await bcrypt.compare(otp.toString(), user.otpHash)
+        if(isMatch){
+            // add the user to database
         const newUser = {
             fullname: user.fullname,
-            hashedpassword: user.hashedpassword,
+            hashedPassword: user.hashedPassword,
             email: user.email,
-            role: user.role,
-            isVerified: true
         }
         await userModel.create(newUser)
 
-        //create profile
-        const newprofile = {
-            email:user.email
-        }
-        if(user.role == "applicant"){
-            await applicantProfileModel.create(newprofile)
-        }
         // delete from pending user 
         const id = user._id;
         await pendingUserModel.findByIdAndDelete(id);
@@ -52,6 +43,12 @@ const handleVerification = async (req, res) => {
         return res.send({
             message: "user created successfully"
         })
+        }
+        else{
+            res.status(400).send({
+                error:"wrong otps"
+            })
+        }
 
     }
     catch (e) {
@@ -63,4 +60,4 @@ const handleVerification = async (req, res) => {
     }
 }
 
-export default handleVerification
+export default emailverificationhandler

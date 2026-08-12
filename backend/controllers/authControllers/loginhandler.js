@@ -1,8 +1,8 @@
-import userModel from "../models/user.js"
+import userModel from "../../models/user.js"
 import bcrypt from 'bcrypt'
 import jsonwebtoken from 'jsonwebtoken'
 
-const handleLogin = async (req, res) => {
+const loginhandler = async (req, res) => {
     // getting data from request
     const { email, password } = req.body
     try {
@@ -13,7 +13,7 @@ const handleLogin = async (req, res) => {
                 error: "email is not registerd"
             })
         }
-        const isMatch = await bcrypt.compare(password, user.hashedpassword)
+        const isMatch = await bcrypt.compare(password, user.hashedPassword)
         if (!isMatch) {
             return res.send({
                 error: "password is incorrect"
@@ -24,7 +24,6 @@ const handleLogin = async (req, res) => {
         const token = jsonwebtoken.sign(
             {
                 email: user.email,
-                role: user.role
             },
             process.env.SECRETKEY,
             {
@@ -40,7 +39,6 @@ const handleLogin = async (req, res) => {
         
         return res.send({
             message: "User Login successfull",
-            role:user.role
         })
     }
     catch (e) {
@@ -50,4 +48,4 @@ const handleLogin = async (req, res) => {
     }
 }
 
-export default handleLogin
+export default loginhandler
