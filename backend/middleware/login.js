@@ -11,6 +11,11 @@ const isLoggedIn = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (e) {
+    if(e.name == "TokenExpiredError"){
+      return res.status(400).send({
+        error:"Session expired! please login again"
+      })
+    }
     return res.send({
       error: "internal server error",
     });

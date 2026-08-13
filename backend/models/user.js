@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema(
       lowercase: true,
       trim: true,
     },
+    contactEmail:{
+      type:String,
+      trim:true
+    },
 
     profileHeadline: {
       type: String,
@@ -194,7 +198,10 @@ const userSchema = mongoose.Schema(
     resume: {
       type: String,
     },
-
+    followers:{
+      type:Number,
+      default:0
+    },
     following: {
       type: [
         {

@@ -29,7 +29,7 @@ const emailverificationhandler = async (req, res) => {
         if(isMatch){
             // add the user to database
         const newUser = {
-            fullname: user.fullname,
+            name: user.fullname,
             hashedPassword: user.hashedPassword,
             email: user.email,
         }
