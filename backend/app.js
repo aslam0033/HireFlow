@@ -6,7 +6,8 @@ import cors from 'cors'
 import dbConnect from './config/db.js';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js'
-import userRoutes from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes.js'  
+import profileRoutes from './routes/profileRoutes.js'  
 import isLoggedIn from './middleware/login.js';
 
 
@@ -23,6 +24,7 @@ dbConnect();
 
 app.use("/auth",authRoutes)
 app.use("/user",isLoggedIn,userRoutes)
+app.use("/profile",isLoggedIn,profileRoutes)
 // app.post("/verify-email",handleVerification)
 // app.post("/login",handleLogin)
 // app.post("/getEmail",handleForgetPassword)

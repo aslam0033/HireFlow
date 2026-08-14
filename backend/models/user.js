@@ -66,21 +66,26 @@ const userSchema = mongoose.Schema(
         {
           qualification: {
             type: String,
+            required:true,
             trim: true,
           },
           institution: {
             type: String,
+            required:true,
             trim: true,
           },
           fieldOfStudy: {
             type: String,
+            required:true,
             trim: true,
           },
           startYear: {
             type: Number,
+            required:true,
           },
           endYear: {
             type: Number,
+            required:true
           },
           grade: {
             type: Number,
@@ -93,27 +98,33 @@ const userSchema = mongoose.Schema(
     experiences: {
       type: [
         {
-          title: {
+          position: {
             type: String,
             trim: true,
+            required:true
           },
-          employmentType: {
+          jobType: {
             type: String,
             trim: true,
+            required:true
           },
           company: {
             type: String,
             trim: true,
+            required:true,
           },
           location: {
             type: String,
             trim: true,
+            required:true,
           },
           isCurrentlyWorking: {
             type: Boolean,
+            default:false
           },
           startDate: {
             type: Date,
+            required:true
           },
           endDate: {
             type: Date,
@@ -122,6 +133,10 @@ const userSchema = mongoose.Schema(
             type: String,
             trim: true,
           },
+          experienceTime:{
+            type:Number,
+            trim:true
+          }
         },
       ],
       default: undefined,
@@ -130,9 +145,10 @@ const userSchema = mongoose.Schema(
     projects: {
       type: [
         {
-          name: {
+          title: {
             type: String,
             trim: true,
+            required:true,
           },
           description: {
             type: String,
@@ -150,13 +166,14 @@ const userSchema = mongoose.Schema(
 
           startDate: {
             type: Date,
+            required:true
           },
 
           endDate: {
             type: Date,
           },
 
-          liveLink: {
+          projectUrl: {
             type: String,
             trim: true,
           },
@@ -171,13 +188,16 @@ const userSchema = mongoose.Schema(
           name: {
             type: String,
             trim: true,
+            required:true
           },
           issuingOrganization: {
             type: String,
             trim: true,
+            required:true
           },
           issueDate: {
             type: Date,
+            required:true
           },
           expiryDate: {
             type: Date,
@@ -189,6 +209,7 @@ const userSchema = mongoose.Schema(
           credentialUrl: {
             type: String,
             trim: true,
+            required:true
           },
         },
       ],
@@ -225,6 +246,17 @@ const userSchema = mongoose.Schema(
           job: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Job",
+          },
+        },
+      ],
+      default: undefined,
+    },
+    appliedJobs: {
+      type: [
+        {
+          job: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Application",
           },
         },
       ],
